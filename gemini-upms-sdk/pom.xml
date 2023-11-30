@@ -4,17 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.gls.gemini</groupId>
-        <artifactId>gemini-parent</artifactId>
+        <groupId>com.gls.gemini.upms</groupId>
+        <artifactId>gemini-upms</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.gls.gemini.upms</groupId>
-    <artifactId>gemini-upms</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>gemini-upms-boot</module>
-        <module>gemini-upms-sdk</module>
-    </modules>
+    <groupId>com.gls.gemini.upms.sdk</groupId>
+    <artifactId>gemini-upms-sdk</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.gls.gemini.sdk.core</groupId>
+            <artifactId>gemini-sdk-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
