@@ -22,7 +22,9 @@ create table t_user_info
     update_user_name varchar(32)      default ''                                            not null comment '更新人姓名',
     update_time      timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
     primary key (id),
-    unique key uk_username (username)
+    unique key uk_username (username),
+    unique key uk_mobile (mobile),
+    unique key uk_email (email)
 ) comment '用户信息表';
 
 -- ----------------------------
