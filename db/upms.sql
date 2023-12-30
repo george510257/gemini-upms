@@ -38,6 +38,7 @@ create table t_role_info
     code             varchar(32)      default ''                                            not null comment '角色编码',
     name             varchar(32)      default ''                                            not null comment '角色名称',
     description      varchar(128)     default ''                                            not null comment '角色描述',
+    type             tinyint unsigned default 0                                             not null comment '角色类型 1:超级管理员 2:管理员 3:普通用户 4:其他',
     pid              bigint unsigned  default 0                                             not null comment '父id',
     level            tinyint unsigned default 0                                             not null comment '层级',
     sort             int unsigned     default 0                                             not null comment '排序',
@@ -123,3 +124,51 @@ create table t_role_permission_relation
     primary key (id),
     unique key uk_role_id_permission_id (role_id, permission_id)
 ) comment '角色权限关系表';
+
+-- ----------------------------
+--  组织信息表
+-- ----------------------------
+drop table if exists t_organization_info;
+
+create table t_organization_info
+(
+    id               bigint unsigned auto_increment                                         not null comment '主键id',
+    code             varchar(32)      default ''                                            not null comment '组织编码',
+    name             varchar(32)      default ''                                            not null comment '组织名称',
+    description      varchar(128)     default ''                                            not null comment '组织描述',
+    type             tinyint unsigned default 0                                             not null comment '组织类型 1:公司 2:部门 3:其他',
+    pid              bigint unsigned  default 0                                             not null comment '父id',
+    level            tinyint unsigned default 0                                             not null comment '层级',
+    sort             int unsigned     default 0                                             not null comment '排序',
+    status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
+    create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
+    create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
+    create_time      timestamp        default current_timestamp                             not null comment '创建时间',
+    update_user_id   bigint unsigned  default 0                                             not null comment '更新人id',
+    update_user_name varchar(32)      default ''                                            not null comment '更新人姓名',
+    update_time      timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
+    primary key (id),
+    unique key uk_code (code)
+) comment '组织信息表';
+
+-- ----------------------------
+--  用户组织关系表
+-- ----------------------------
+drop table if exists t_user_organization_relation;
+
+create table t_user_organization_relation
+(
+    id               bigint unsigned auto_increment                                         not null comment '主键id',
+    user_id          bigint unsigned  default 0                                             not null comment '用户id',
+    organization_id  bigint unsigned  default 0                                             not null comment '组织id',
+    deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
+    create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
+    create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
+    create_time      timestamp        default current_timestamp                             not null comment '创建时间',
+    update_user_id   bigint unsigned  default 0                                             not null comment '更新人id',
+    update_user_name varchar(32)      default ''                                            not null comment '更新人姓名',
+    update_time      timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
+    primary key (id),
+    unique key uk_user_id_organization_id (user_id, organization_id)
+) comment '用户组织关系表';
