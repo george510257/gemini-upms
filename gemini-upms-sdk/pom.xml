@@ -17,5 +17,16 @@
             <groupId>com.gls.gemini.sdk.core</groupId>
             <artifactId>gemini-sdk-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations-jakarta</artifactId>
+            <version>2.2.15</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -1,0 +1,28 @@
+package com.gls.gemini.upms.boot.web.controller;
+
+import com.gls.gemini.upms.sdk.vo.DemoVo;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@RestController
+@RequestMapping("/demo")
+@Tag(name = "demo", description = "样例")
+public class DemoController {
+
+    @Parameters({
+            @Parameter(name = "demoVo", description = "样例vo", required = true, schema = @Schema(implementation = DemoVo.class))
+    })
+    @PostMapping(name = "/hello", consumes = "application/json")
+    public String hello(@RequestBody DemoVo demoVo) {
+        log.info("hello {}", demoVo);
+        return "hello " + demoVo.getName() + "!";
+    }
+}
