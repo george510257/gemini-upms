@@ -1,3 +1,15 @@
+-- ----------------------------
+--  数据库初始化脚本
+-- ----------------------------
+-- 1.创建数据库
+drop database if exists upms;
+
+create database upms default character set utf8mb4 collate utf8mb4_general_ci;
+
+use upms;
+
+set names utf8mb4;
+
 -- ------------------------
 --  用户信息表
 -- ------------------------
