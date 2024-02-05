@@ -1,9 +1,14 @@
 spring:
   application:
-    name: gemini-upms-boot
+    name: gemini-upms
   profiles:
     active: dev
     include: cloud
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://docker-server:3306/upms?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
 
 gemini:
   open-api:
