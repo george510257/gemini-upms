@@ -4,3 +4,17 @@ spring:
   profiles:
     active: dev
     include: cloud
+
+gemini:
+  open-api:
+    enabled: true
+    info:
+      version: 1.0.0
+      title: Gemini UPMS Boot
+      description: Gemini UPMS Boot
+      contact:
+        name: george
+        email: george@gls.com
+      license:
+        name: Apache License 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0.html
