@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Accessors(chain = true)
@@ -16,4 +17,7 @@ public class DemoVo implements Serializable {
 
     @Schema(title = "标题", description = "标题")
     private String title;
+
+    @Schema(title = "生日", description = "生日")
+    private Date birthday;
 }
