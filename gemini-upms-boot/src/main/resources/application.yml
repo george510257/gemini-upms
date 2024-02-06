@@ -9,6 +9,18 @@ spring:
     url: jdbc:mysql://docker-server:3306/upms?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
+  data:
+    redis:
+      host: docker-server
+      port: 6379
+      database: 7
+      timeout: 10000
+  cache:
+    type: redis
+    redis:
+      cache-null-values: true
+      key-prefix: gemini-upms-cache
+      time-to-live: 3600
 
 gemini:
   open-api:
@@ -20,6 +32,8 @@ gemini:
       contact:
         name: george
         email: george@gls.com
+        url: https://www.gls.com
       license:
         name: Apache License 2.0
-        url: http://www.apache.org/licenses/LICENSE-2.0.html
+        url: https://www.apache.org/licenses/LICENSE-2.0.html
+        identifier: Apache-2.0

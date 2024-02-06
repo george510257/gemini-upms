@@ -10,7 +10,8 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DemoService extends ServiceImpl<DemoMapper, DemoEntity> implements BaseMybatisService<DemoConverter, DemoMapper, DemoVo, DemoEntity> {
+public class DemoService extends ServiceImpl<DemoMapper, DemoEntity>
+        implements BaseMybatisService<DemoConverter, DemoMapper, DemoVo, DemoEntity> {
 
     @Resource
     private DemoConverter demoConverter;
