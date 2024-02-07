@@ -7,17 +7,16 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serial;
-import java.util.Date;
 
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
-@TableName("demo")
+@TableName("t_demo")
 public class DemoEntity extends BaseEntity {
 
     public static final String COL_NAME = "name";
-    public static final String COL_TITLE = "title";
-    public static final String COL_BIRTHDAY = "birthday";
+    public static final String COL_DESCRIPTION = "description";
+    public static final String COL_STATUS = "status";
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -28,12 +27,12 @@ public class DemoEntity extends BaseEntity {
     private String name;
 
     /**
-     * 标题
+     * 描述
      */
-    private String title;
+    private String description;
 
     /**
-     * 生日
+     * 状态 0:正常 1:禁用
      */
-    private Date birthday;
+    private Integer status;
 }

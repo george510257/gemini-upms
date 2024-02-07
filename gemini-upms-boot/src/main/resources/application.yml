@@ -19,8 +19,8 @@ spring:
     type: redis
     redis:
       cache-null-values: true
-      key-prefix: gemini-upms-cache
-      time-to-live: 3600
+      key-prefix: gemini_upms_cache_
+      time-to-live: 3600000
 
 gemini:
   open-api:
@@ -37,3 +37,7 @@ gemini:
         name: Apache License 2.0
         url: https://www.apache.org/licenses/LICENSE-2.0.html
         identifier: Apache-2.0
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

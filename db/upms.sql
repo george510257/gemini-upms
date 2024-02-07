@@ -184,3 +184,25 @@ create table t_user_organization_relation
     primary key (id),
     unique key uk_user_id_organization_id (user_id, organization_id)
 ) comment '用户组织关系表';
+
+
+-- ----------------------------
+--  demo数据
+-- ----------------------------
+drop table if exists t_demo;
+
+create table t_demo
+(
+    id               bigint unsigned auto_increment                                         not null comment '主键id',
+    name             varchar(32)      default ''                                            not null comment '名称',
+    description      varchar(128)     default ''                                            not null comment '描述',
+    status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
+    create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
+    create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
+    create_time      timestamp        default current_timestamp                             not null comment '创建时间',
+    update_user_id   bigint unsigned  default 0                                             not null comment '更新人id',
+    update_user_name varchar(32)      default ''                                            not null comment '更新人姓名',
+    update_time      timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
+    primary key (id)
+) comment 'demo数据';

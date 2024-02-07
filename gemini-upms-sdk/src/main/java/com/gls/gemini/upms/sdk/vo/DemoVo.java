@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
-
 
 @Data
 @Accessors(chain = true)
@@ -18,9 +16,9 @@ public class DemoVo extends BaseVo {
     @Schema(title = "名称", description = "名称")
     private String name;
 
-    @Schema(title = "标题", description = "标题")
-    private String title;
+    @Schema(title = "描述", description = "描述")
+    private String description;
 
-    @Schema(title = "生日", description = "生日")
-    private Date birthday;
+    @Schema(title = "状态", description = "状态 0:正常 1:禁用")
+    private Integer status;
 }
