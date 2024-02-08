@@ -20,7 +20,7 @@ spring:
     redis:
       cache-null-values: true
       key-prefix: "gemini-upms:cache:"
-      time-to-live: 3600000
+      time-to-live: 1000
 
 gemini:
   open-api:
@@ -40,7 +40,7 @@ gemini:
   redis:
     cache:
       - cache-name: "demo-service:vo"
-        time-to-live: 1000
+        time-to-live: 3600000
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
