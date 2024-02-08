@@ -19,7 +19,7 @@ spring:
     type: redis
     redis:
       cache-null-values: true
-      key-prefix: gemini_upms_cache_
+      key-prefix: "gemini-upms-cache:"
       time-to-live: 3600000
 
 gemini:
