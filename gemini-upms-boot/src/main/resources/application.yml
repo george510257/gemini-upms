@@ -37,7 +37,10 @@ gemini:
         name: Apache License 2.0
         url: https://www.apache.org/licenses/LICENSE-2.0.html
         identifier: Apache-2.0
-
+  redis:
+    cache:
+      - cache-name: "demo-service:vo"
+        time-to-live: 1000
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
