@@ -21,6 +21,10 @@ spring:
       cache-null-values: true
       key-prefix: "gemini-upms:cache:"
       time-to-live: 1000
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.31.
 
 gemini:
   open-api:
@@ -41,6 +45,9 @@ gemini:
     cache:
       - cache-name: "demo-service:vo"
         time-to-live: 3600000
+  xxl-job:
+    admin-addresses: http://docker-server:48080/xxl-job-admin
+    ip: 192.168.31.13
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

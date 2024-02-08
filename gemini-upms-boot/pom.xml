@@ -26,5 +26,9 @@
             <artifactId>gemini-upms-sdk</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.gls.gemini.starter.xxl.job</groupId>
+            <artifactId>gemini-starter-xxl-job</artifactId>
+        </dependency>
     </dependencies>
 </project>
