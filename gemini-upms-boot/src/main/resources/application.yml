@@ -25,14 +25,39 @@ spring:
     inetutils:
       preferred-networks:
         - 192.168.31.
-
+  kafka:
+    bootstrap-servers: docker-server:19092
+    consumer:
+      group-id: gemini-upms
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      auto-commit-interval: 100ms
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 100
+      properties:
+        session.timeout.ms: 30000
+        max.poll.interval.ms: 300000
+    listener:
+      type: single
+      concurrency: 8
+      ack-mode: manual_immediate
+      poll-timeout: 1000
+    producer:
+      acks: all
+      retries: 0
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        linger.ms: 1
+        session.timeout.ms: 30000
 gemini:
   open-api:
     enabled: true
     info:
       version: 1.0.0
       title: Gemini UPMS Boot
-      description: Gemini UPMS Boot
+      description: "用户权限管理系统"
       contact:
         name: george
         email: george@gls.com
@@ -48,6 +73,3 @@ gemini:
   xxl-job:
     admin-addresses: http://docker-server:48080/xxl-job-admin
     ip: 192.168.31.13
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
