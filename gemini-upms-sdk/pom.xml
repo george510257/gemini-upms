@@ -17,5 +17,9 @@
             <groupId>com.gls.gemini.sdk.core</groupId>
             <artifactId>gemini-sdk-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gls.gemini.starter.excel</groupId>
+            <artifactId>gemini-starter-excel</artifactId>
+        </dependency>
     </dependencies>
 </project>
