@@ -197,6 +197,8 @@ create table t_demo
     name             varchar(32)      default ''                                            not null comment '名称',
     description      varchar(128)     default ''                                            not null comment '描述',
     status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
