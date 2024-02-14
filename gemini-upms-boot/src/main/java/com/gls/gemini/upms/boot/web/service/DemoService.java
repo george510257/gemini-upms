@@ -8,6 +8,9 @@ import com.gls.gemini.upms.boot.web.mapper.DemoMapper;
 import com.gls.gemini.upms.sdk.vo.DemoVo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class DemoService extends ServiceImpl<DemoMapper, DemoEntity>
@@ -24,5 +27,11 @@ public class DemoService extends ServiceImpl<DemoMapper, DemoEntity>
     @Override
     public DemoMapper getMapper() {
         return this.getBaseMapper();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void saveBatch(List<DemoVo> demoVos) {
+        List<DemoEntity> demoEntities = demoConverter.convertList(demoVos);
+        this.saveBatch(demoEntities);
     }
 }
