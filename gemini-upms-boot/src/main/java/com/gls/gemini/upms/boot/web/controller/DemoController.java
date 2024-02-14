@@ -41,7 +41,7 @@ public class DemoController extends BaseController<DemoService, DemoVo> {
     }
 
     @Operation(summary = "下载", description = "下载")
-    @ExcelResponse(fileName = "样例", sheets = @ExcelSheet(sheetName = "样例1", head = DemoVo.class))
+    @ExcelResponse(fileName = "样例", sheets = @ExcelSheet(sheetName = "样例1"))
     @PostMapping("/download")
     public List<DemoVo> download() {
         return service.list(new DemoVo());
