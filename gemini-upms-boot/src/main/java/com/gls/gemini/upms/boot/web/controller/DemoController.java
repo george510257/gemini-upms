@@ -1,7 +1,7 @@
 package com.gls.gemini.upms.boot.web.controller;
 
 import cn.hutool.json.JSONUtil;
-import com.gls.gemini.common.core.base.BaseController;
+import com.gls.gemini.boot.core.base.BaseController;
 import com.gls.gemini.starter.excel.annotation.ExcelRequest;
 import com.gls.gemini.starter.excel.annotation.ExcelResponse;
 import com.gls.gemini.starter.excel.annotation.ExcelSheet;
