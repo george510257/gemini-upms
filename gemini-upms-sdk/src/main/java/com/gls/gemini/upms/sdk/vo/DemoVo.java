@@ -1,6 +1,5 @@
 package com.gls.gemini.upms.sdk.vo;
 
-import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.gls.gemini.common.core.base.BaseVo;
 import com.gls.gemini.upms.sdk.excel.converter.StatusConverter;
@@ -12,7 +11,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Schema(title = "demo", description = "样例vo")
-@ExcelIgnoreUnannotated
 public class DemoVo extends BaseVo {
 
     @ExcelProperty(value = "名称")
