@@ -51,6 +51,6 @@ public class DemoController extends BaseController<DemoService, DemoVo> {
     @Parameter(name = "file", description = "文件", required = true, schema = @Schema(type = "string", format = "binary"))
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void upload(@ExcelRequest List<DemoVo> demoVos) {
-        service.saveBatch(demoVos);
+        service.saveOrUpdateBatch(demoVos);
     }
 }

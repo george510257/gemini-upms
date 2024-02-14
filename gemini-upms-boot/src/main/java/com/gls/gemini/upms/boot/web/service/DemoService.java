@@ -13,14 +13,15 @@ import java.util.List;
 @Service
 public class DemoService extends BaseServiceImpl<DemoConverter, DemoMapper, DemoVo, DemoEntity> {
 
+
     /**
-     * 批量新增
+     * 批量保存
      *
-     * @param demoVos 视图
+     * @param demoVos demoVos
      */
     @Transactional(rollbackFor = Exception.class)
-    public void saveBatch(List<DemoVo> demoVos) {
+    public void saveOrUpdateBatch(List<DemoVo> demoVos) {
         List<DemoEntity> demoEntities = converter.convertList(demoVos);
-        this.saveBatch(demoEntities);
+        this.saveOrUpdateBatch(demoEntities);
     }
 }
