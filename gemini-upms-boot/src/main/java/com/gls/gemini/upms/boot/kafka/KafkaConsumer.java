@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaConsumer {
 
-    @KafkaListener(topics = "test")
+    @KafkaListener(topics = KafkaTopicConstants.TOPIC_TEST)
     public void listen(String input) {
-        log.info("KafkaConsumer: {}", input);
+        log.info("kafka 消息接收成功 KafkaConsumer: {}", input);
     }
 }
