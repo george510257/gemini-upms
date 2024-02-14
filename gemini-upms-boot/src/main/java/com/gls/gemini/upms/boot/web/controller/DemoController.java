@@ -26,18 +26,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/demo")
 @Tag(name = "demo", description = "样例")
-public class DemoController implements BaseController<DemoService, DemoVo> {
+public class DemoController extends BaseController<DemoService, DemoVo> {
 
-    @Resource
-    private DemoService demoService;
     @Resource
     private KafkaProducer kafkaProducer;
-
-
-    @Override
-    public DemoService getService() {
-        return this.demoService;
-    }
 
     @Operation(summary = "样例", description = "样例")
     @Parameter(name = "demoVo", description = "样例vo", required = true, schema = @Schema(implementation = DemoVo.class))
@@ -52,13 +44,13 @@ public class DemoController implements BaseController<DemoService, DemoVo> {
     @ExcelResponse(fileName = "样例", sheets = @ExcelSheet(sheetName = "样例1", head = DemoVo.class))
     @PostMapping("/download")
     public List<DemoVo> download() {
-        return demoService.list(new DemoVo());
+        return service.list(new DemoVo());
     }
 
     @Operation(summary = "上传", description = "上传")
     @Parameter(name = "file", description = "文件", required = true, schema = @Schema(type = "string", format = "binary"))
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void upload(@ExcelRequest List<DemoVo> demoVos) {
-        demoService.saveBatch(demoVos);
+        service.saveBatch(demoVos);
     }
 }
