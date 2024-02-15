@@ -7,6 +7,9 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 
+/**
+ * 样例实体对象
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("t_demo")

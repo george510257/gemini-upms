@@ -7,8 +7,10 @@ import com.gls.gemini.upms.boot.web.mapper.DemoMapper;
 import com.gls.gemini.upms.sdk.vo.DemoVo;
 import org.springframework.stereotype.Service;
 
+/**
+ * 样例服务
+ */
 @Service
 public class DemoService extends BaseServiceImpl<DemoConverter, DemoMapper, DemoVo, DemoEntity> {
-
 
 }

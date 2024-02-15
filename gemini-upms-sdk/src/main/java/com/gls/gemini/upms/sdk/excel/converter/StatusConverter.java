@@ -7,6 +7,9 @@ import com.alibaba.excel.metadata.data.ReadCellData;
 import com.alibaba.excel.metadata.data.WriteCellData;
 import com.alibaba.excel.metadata.property.ExcelContentProperty;
 
+/**
+ * 状态转换器
+ */
 public class StatusConverter implements Converter<Integer> {
 
     @Override

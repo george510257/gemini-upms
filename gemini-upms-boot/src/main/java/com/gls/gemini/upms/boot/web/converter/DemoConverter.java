@@ -7,6 +7,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+/**
+ * 样例转换器
+ */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface DemoConverter extends BaseConverter<DemoVo, DemoEntity> {
