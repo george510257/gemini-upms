@@ -60,8 +60,8 @@ gemini:
       description: "用户权限管理系统"
       contact:
         name: george
-        email: george@gls.com
-        url: https://www.gls.com
+        email: george@glseven.com
+        url: https://www.glseven.com
       license:
         name: Apache License 2.0
         url: https://www.apache.org/licenses/LICENSE-2.0.html
