@@ -14,17 +14,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.gls.gemini.upms.sdk</groupId>
+            <artifactId>gemini-upms-sdk</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.gls.gemini.boot.core</groupId>
             <artifactId>gemini-boot-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gls.gemini.boot.cloud</groupId>
             <artifactId>gemini-boot-cloud</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.gls.gemini.upms.sdk</groupId>
-            <artifactId>gemini-upms-sdk</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.gls.gemini.starter.xxl.job</groupId>
