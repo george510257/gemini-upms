@@ -2,11 +2,11 @@
 --  数据库初始化脚本
 -- ----------------------------
 -- 1.创建数据库
-drop database if exists upms;
+drop database if exists gemini_upms;
 
-create database upms default character set utf8mb4 collate utf8mb4_general_ci;
+create database gemini_upms default character set utf8mb4 collate utf8mb4_general_ci;
 
-use upms;
+use gemini_upms;
 
 set names utf8mb4;
 
@@ -26,6 +26,8 @@ create table t_user_info
     mobile           varchar(32)      default ''                                            not null comment '手机号',
     avatar           varchar(128)     default ''                                            not null comment '头像',
     status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
@@ -55,6 +57,8 @@ create table t_role_info
     level            tinyint unsigned default 0                                             not null comment '层级',
     sort             int unsigned     default 0                                             not null comment '排序',
     status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
@@ -76,6 +80,8 @@ create table t_user_role_relation
     id               bigint unsigned auto_increment                                         not null comment '主键id',
     user_id          bigint unsigned  default 0                                             not null comment '用户id',
     role_id          bigint unsigned  default 0                                             not null comment '角色id',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
@@ -105,6 +111,8 @@ create table t_permission_info
     level            tinyint unsigned default 0                                             not null comment '层级',
     sort             int unsigned     default 0                                             not null comment '排序',
     status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
@@ -126,6 +134,8 @@ create table t_role_permission_relation
     id               bigint unsigned auto_increment                                         not null comment '主键id',
     role_id          bigint unsigned  default 0                                             not null comment '角色id',
     permission_id    bigint unsigned  default 0                                             not null comment '权限id',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
@@ -153,6 +163,8 @@ create table t_organization_info
     level            tinyint unsigned default 0                                             not null comment '层级',
     sort             int unsigned     default 0                                             not null comment '排序',
     status           tinyint unsigned default 0                                             not null comment '状态 0:正常 1:禁用',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
@@ -174,6 +186,8 @@ create table t_user_organization_relation
     id               bigint unsigned auto_increment                                         not null comment '主键id',
     user_id          bigint unsigned  default 0                                             not null comment '用户id',
     organization_id  bigint unsigned  default 0                                             not null comment '组织id',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
     create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
     create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
