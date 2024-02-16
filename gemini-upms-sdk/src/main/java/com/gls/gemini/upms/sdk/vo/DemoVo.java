@@ -2,7 +2,7 @@ package com.gls.gemini.upms.sdk.vo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.gls.gemini.sdk.core.vo.BaseVo;
-import com.gls.gemini.upms.sdk.excel.converter.StatusConverter;
+import com.gls.gemini.starter.excel.converter.StatusConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
