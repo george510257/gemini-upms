@@ -19,7 +19,7 @@
     </resultMap>
 
     <sql id="demoSql">
-id,name,description,status,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
+        id,name,description,status,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
 
 </mapper>

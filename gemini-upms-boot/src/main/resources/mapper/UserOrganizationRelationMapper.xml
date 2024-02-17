@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gls.gemini.upms.boot.web.mapper.UserOrganizationRelationMapper">
 
-    <resultMap id="userOrganizationRelationResultMap" type="com.gls.gemini.upms.boot.web.entity.UserOrganizationRelationEntity">
+    <resultMap id="userOrganizationRelationResultMap"
+               type="com.gls.gemini.upms.boot.web.entity.UserOrganizationRelationEntity">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="organization_id" property="organizationId"/>
@@ -18,7 +19,7 @@
     </resultMap>
 
     <sql id="userOrganizationRelationSql">
-id,user_id,organization_id,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
+        id,user_id,organization_id,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
 
 </mapper>
