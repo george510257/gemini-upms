@@ -4,12 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * upms启动类
+ * Gemini UPMS启动类
  */
 @SpringBootApplication
 public class UpmsBootApplication {
     /**
-     * upms启动入口
+     * Gemini UPMS启动入口
      *
      * @param args 启动参数
      */
