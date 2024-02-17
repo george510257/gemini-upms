@@ -11,14 +11,14 @@
 
     <groupId>com.gls.gemini.upms</groupId>
     <artifactId>gemini-upms</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>upms</name>
+    <name>Gemini UPMS</name>
     <description>用户权限管理系统</description>
 
     <modules>
         <module>gemini-upms-boot</module>
         <module>gemini-upms-sdk</module>
     </modules>
-
 </project>
