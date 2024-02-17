@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gls.gemini.upms.boot.web.mapper.DemoMapper">
+<mapper namespace="com.gls.gemini.upms.boot.web.mapper.UserRoleRelationMapper">
 
-    <resultMap id="demoResultMap" type="com.gls.gemini.upms.boot.web.entity.DemoEntity">
+    <resultMap id="userRoleRelationResultMap" type="com.gls.gemini.upms.boot.web.entity.UserRoleRelationEntity">
         <id column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="description" property="description"/>
-        <result column="status" property="status"/>
+        <result column="user_id" property="userId"/>
+        <result column="role_id" property="roleId"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="version" property="version"/>
         <result column="deleted" property="deleted"/>
@@ -18,8 +17,8 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-    <sql id="demoSql">
-id,name,description,status,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
+    <sql id="userRoleRelationSql">
+id,user_id,role_id,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
 
 </mapper>
