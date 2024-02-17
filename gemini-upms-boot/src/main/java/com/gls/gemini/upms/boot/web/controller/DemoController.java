@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author gemini 自动生成
  * @version 0.0.1-SNAPSHOT
- * @date 2024-02-17 15:17:46
+ * @date 2024-02-17
  */
 @Slf4j
 @RestController
