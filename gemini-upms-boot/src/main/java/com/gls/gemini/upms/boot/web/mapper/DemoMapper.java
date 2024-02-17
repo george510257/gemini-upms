@@ -4,7 +4,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gls.gemini.upms.boot.web.entity.DemoEntity;
 
 /**
- * 样例mapper
+ * demo数据 Mapper
+ *
+ * @author gemini 自动生成
+ * @version 0.0.1-SNAPSHOT
+ * @date 2024-02-17 15:17:46
  */
 public interface DemoMapper extends BaseMapper<DemoEntity> {
 }

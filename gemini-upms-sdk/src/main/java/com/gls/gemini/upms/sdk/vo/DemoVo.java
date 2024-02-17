@@ -8,11 +8,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 样例vo
+ * demo数据 Vo
+ *
+ * @author gemini 自动生成
+ * @version 0.0.1-SNAPSHOT
+ * @date 2024-02-17 15:17:46
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Schema(title = "demo", description = "样例vo")
+@Schema(title = "demo", description = "demo数据Vo")
 public class DemoVo extends BaseVo {
 
     @ExcelProperty(value = "名称")

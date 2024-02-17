@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Gemini UPMS启动类
+ *
+ * @author gemini 自动生成
+ * @version 0.0.1-SNAPSHOT
+ * @date 2024-02-17 15:17:46
  */
 @SpringBootApplication
 public class UpmsBootApplication {

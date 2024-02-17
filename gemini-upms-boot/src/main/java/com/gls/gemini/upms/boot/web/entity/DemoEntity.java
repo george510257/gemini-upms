@@ -8,7 +8,11 @@ import lombok.EqualsAndHashCode;
 import java.io.Serial;
 
 /**
- * 样例实体对象
+ * demo数据 实体类
+ *
+ * @author gemini 自动生成
+ * @version 0.0.1-SNAPSHOT
+ * @date 2024-02-17 15:17:46
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

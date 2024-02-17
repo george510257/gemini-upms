@@ -5,7 +5,11 @@ import com.gls.gemini.upms.sdk.vo.DemoVo;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
- * 样例feign
+ * demo数据 Feign
+ *
+ * @author gemini 自动生成
+ * @version 0.0.1-SNAPSHOT
+ * @date 2024-02-17 15:17:46
  */
 @FeignClient(name = "gemini-upms", contextId = "demo", path = "/demo")
 public interface DemoFeign extends BaseFeign<DemoVo> {
