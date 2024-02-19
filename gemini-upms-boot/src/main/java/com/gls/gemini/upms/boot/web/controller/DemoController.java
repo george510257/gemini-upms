@@ -1,7 +1,9 @@
 package com.gls.gemini.upms.boot.web.controller;
 
 import cn.hutool.json.JSONUtil;
+import com.aliyun.oss.model.Bucket;
 import com.gls.gemini.boot.core.base.BaseController;
+import com.gls.gemini.starter.aliyun.oss.support.OssTemplate;
 import com.gls.gemini.upms.boot.kafka.KafkaProducer;
 import com.gls.gemini.upms.boot.kafka.KafkaTopicConstants;
 import com.gls.gemini.upms.boot.web.service.DemoService;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.stream.Collectors;
 
 /**
  * demo数据 控制器
@@ -30,12 +34,20 @@ public class DemoController extends BaseController<DemoService, DemoVo> {
 
     @Resource
     private KafkaProducer kafkaProducer;
+    @Resource
+    private OssTemplate ossTemplate;
 
-    @Operation(summary = "样例", description = "样例")
-    @PostMapping("/hello")
+    @Operation(summary = "kafkaDemo", description = "kafka发送消息")
+    @PostMapping("/kafkaDemo")
     public DemoVo hello(@RequestBody DemoVo demoVo) {
         log.info("demoVo {}", JSONUtil.toJsonStr(demoVo));
         kafkaProducer.send(KafkaTopicConstants.TOPIC_TEST, JSONUtil.toJsonStr(demoVo));
         return demoVo;
+    }
+
+    @Operation(summary = "ossDemo", description = "oss测试")
+    @PostMapping("/ossDemo")
+    public String ossDemo() {
+        return ossTemplate.getALlBucket().stream().map(Bucket::getName).collect(Collectors.joining(","));
     }
 }

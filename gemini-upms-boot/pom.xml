@@ -34,6 +34,10 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gls.gemini.starter.aliyun.oss</groupId>
+            <artifactId>gemini-starter-aliyun-oss</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
