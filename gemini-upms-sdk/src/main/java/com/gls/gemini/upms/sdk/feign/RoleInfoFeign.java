@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  *
  * @author gemini 自动生成
  * @version 0.0.1-SNAPSHOT
- * @date 2024-02-17
+ * @date 2024-02-19
  */
 @FeignClient(name = "gemini-upms", contextId = "roleInfo", path = "/roleInfo")
 public interface RoleInfoFeign extends BaseFeign<RoleInfoVo> {
