@@ -62,15 +62,7 @@ gemini:
         name: "Apache License 2.0"
         url: "https://www.apache.org/licenses/LICENSE-2.0.html"
         identifier: "Apache-2.0"
-    servers:
-      - url: "http://localhost:8080/${spring.application.name}"
-        description: "网关代理"
-      - url: "http://localhost:9000"
-        description: "本地直连"
   redis:
     cache:
       - cache-name: "demo-service:vo"
         time-to-live: 3600000
-  xxl-job:
-    admin-addresses: http://docker-server:48080/xxl-job-admin
-    ip: 192.168.31.13
