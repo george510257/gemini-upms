@@ -3,9 +3,7 @@ package com.gls.gemini.upms.boot.web.controller;
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.model.Bucket;
 import com.gls.gemini.boot.core.base.BaseController;
-import com.gls.gemini.common.core.interfaces.IUser;
 import com.gls.gemini.common.core.support.LoginTemplate;
-import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.starter.aliyun.oss.support.OssTemplate;
 import com.gls.gemini.upms.boot.kafka.KafkaProducer;
 import com.gls.gemini.upms.boot.kafka.KafkaTopicConstants;
@@ -39,6 +37,8 @@ public class DemoController extends BaseController<DemoService, DemoVo> {
     private KafkaProducer kafkaProducer;
     @Resource
     private OssTemplate ossTemplate;
+    @Resource
+    private LoginTemplate<?, ?, ?, ?> loginTemplate;
 
     @Operation(summary = "kafkaDemo", description = "kafka发送消息")
     @PostMapping("/kafkaDemo")
@@ -56,9 +56,9 @@ public class DemoController extends BaseController<DemoService, DemoVo> {
 
     @Operation(summary = "获取登录用户", description = "获取登录用户")
     @PostMapping("/getLoginUser")
-    public IUser getLoginUser() {
-        IUser loginUser = LoginTemplate.getLoginUser().orElse(new UserVo());
-        log.info("loginUser {}", JSONUtil.toJsonStr(loginUser));
-        return loginUser;
+    public String getLoginUser() {
+        String loginUserName = loginTemplate.getLoginUserRealName().orElse("未登录");
+        log.info("loginUser {}", loginUserName);
+        return loginUserName;
     }
 }
