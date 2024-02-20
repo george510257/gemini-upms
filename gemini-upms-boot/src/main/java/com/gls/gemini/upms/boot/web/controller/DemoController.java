@@ -3,6 +3,9 @@ package com.gls.gemini.upms.boot.web.controller;
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.model.Bucket;
 import com.gls.gemini.boot.core.base.BaseController;
+import com.gls.gemini.common.core.interfaces.IUser;
+import com.gls.gemini.common.core.support.LoginTemplate;
+import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.starter.aliyun.oss.support.OssTemplate;
 import com.gls.gemini.upms.boot.kafka.KafkaProducer;
 import com.gls.gemini.upms.boot.kafka.KafkaTopicConstants;
@@ -49,5 +52,13 @@ public class DemoController extends BaseController<DemoService, DemoVo> {
     @PostMapping("/ossDemo")
     public String ossDemo() {
         return ossTemplate.getALlBucket().stream().map(Bucket::getName).collect(Collectors.joining(","));
+    }
+
+    @Operation(summary = "获取登录用户", description = "获取登录用户")
+    @PostMapping("/getLoginUser")
+    public IUser getLoginUser() {
+        IUser loginUser = LoginTemplate.getLoginUser().orElse(new UserVo());
+        log.info("loginUser {}", JSONUtil.toJsonStr(loginUser));
+        return loginUser;
     }
 }
