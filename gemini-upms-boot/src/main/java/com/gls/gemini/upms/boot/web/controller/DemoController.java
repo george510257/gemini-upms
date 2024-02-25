@@ -8,6 +8,7 @@ import com.gls.gemini.starter.aliyun.oss.support.OssTemplate;
 import com.gls.gemini.upms.boot.kafka.KafkaProducer;
 import com.gls.gemini.upms.boot.kafka.KafkaTopicConstants;
 import com.gls.gemini.upms.boot.web.service.DemoService;
+import com.gls.gemini.upms.sdk.feign.DemoFeign;
 import com.gls.gemini.upms.sdk.vo.DemoVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,13 +26,12 @@ import java.util.stream.Collectors;
  *
  * @author gemini 自动生成
  * @version 0.0.1-SNAPSHOT
- * @date 2024-02-19
  */
 @Slf4j
 @RestController
 @RequestMapping("/demo")
 @Tag(name = "demo", description = "demo数据")
-public class DemoController extends BaseController<DemoService, DemoVo> {
+public class DemoController extends BaseController<DemoService, DemoVo> implements DemoFeign {
 
     @Resource
     private KafkaProducer kafkaProducer;

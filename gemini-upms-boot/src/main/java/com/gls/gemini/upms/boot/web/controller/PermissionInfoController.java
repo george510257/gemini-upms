@@ -2,6 +2,7 @@ package com.gls.gemini.upms.boot.web.controller;
 
 import com.gls.gemini.boot.core.base.BaseController;
 import com.gls.gemini.upms.boot.web.service.PermissionInfoService;
+import com.gls.gemini.upms.sdk.feign.PermissionInfoFeign;
 import com.gls.gemini.upms.sdk.vo.PermissionInfoVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author gemini 自动生成
  * @version 0.0.1-SNAPSHOT
- * @date 2024-02-19
  */
 @Slf4j
 @RestController
 @RequestMapping("/permissionInfo")
 @Tag(name = "permissionInfo", description = "权限信息表")
-public class PermissionInfoController extends BaseController<PermissionInfoService, PermissionInfoVo> {
+public class PermissionInfoController extends BaseController<PermissionInfoService, PermissionInfoVo> implements PermissionInfoFeign {
 }
