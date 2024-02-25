@@ -1,6 +1,7 @@
 package com.gls.gemini.upms.boot.web.converter;
 
 import com.gls.gemini.common.core.base.BaseConverter;
+import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.upms.boot.web.entity.UserInfoEntity;
 import com.gls.gemini.upms.sdk.vo.UserInfoVo;
 import org.mapstruct.Mapper;
@@ -16,4 +17,5 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserInfoConverter extends BaseConverter<UserInfoVo, UserInfoEntity> {
+    UserVo toUserVo(UserInfoEntity entity);
 }

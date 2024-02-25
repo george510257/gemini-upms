@@ -1,5 +1,7 @@
 package com.gls.gemini.upms.boot.web.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.starter.mybatis.base.BaseServiceImpl;
 import com.gls.gemini.upms.boot.web.converter.UserInfoConverter;
 import com.gls.gemini.upms.boot.web.entity.UserInfoEntity;
@@ -17,4 +19,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfoMapper, UserInfoVo, UserInfoEntity> {
+    public UserVo loadUserByUsername(String username) {
+        UserInfoEntity entity = this.getOne(new QueryWrapper<UserInfoEntity>().eq(UserInfoEntity.COL_USERNAME, username));
+        UserVo userVo = this.converter.toUserVo(entity);
+        log.info("userVo: {}", userVo);
+        return userVo;
+    }
 }

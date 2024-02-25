@@ -19,7 +19,7 @@ create table t_user_info
 (
     id               bigint unsigned auto_increment                                         not null comment '主键id',
     username         varchar(32)      default ''                                            not null comment '用户名',
-    password         varchar(32)      default ''                                            not null comment '密码',
+    password         varchar(128)     default ''                                            not null comment '密码',
     name             varchar(32)      default ''                                            not null comment '姓名',
     nickname         varchar(32)      default ''                                            not null comment '昵称',
     email            varchar(32)      default ''                                            not null comment '邮箱',
