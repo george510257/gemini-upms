@@ -66,3 +66,5 @@ gemini:
     cache:
       - cache-name: "demo-service:vo"
         time-to-live: 3600000
+server:
+  port: 8083
