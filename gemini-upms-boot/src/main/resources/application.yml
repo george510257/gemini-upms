@@ -58,10 +58,7 @@ gemini:
         name: "Gemini UPMS"
         email: "gemini@glseven.com"
         url: "https://www.glseven.com"
-      license:
-        name: "Apache License 2.0"
-        url: "https://www.apache.org/licenses/LICENSE-2.0.html"
-        identifier: "Apache-2.0"
+
   redis:
     cache:
       - cache-name: "demo-service:vo"
