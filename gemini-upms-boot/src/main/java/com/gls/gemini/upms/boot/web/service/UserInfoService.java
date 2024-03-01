@@ -8,6 +8,7 @@ import com.gls.gemini.upms.boot.web.entity.UserInfoEntity;
 import com.gls.gemini.upms.boot.web.mapper.UserInfoMapper;
 import com.gls.gemini.upms.sdk.vo.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfoMapper, UserInfoVo, UserInfoEntity> {
+public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfoMapper, UserInfoVo, UserInfoEntity> implements UserDetailsService {
     public UserVo loadUserByUsername(String username) {
         UserInfoEntity entity = this.getOne(new QueryWrapper<UserInfoEntity>().eq(UserInfoEntity.COL_USERNAME, username));
         UserVo userVo = this.converter.toUserVo(entity);
