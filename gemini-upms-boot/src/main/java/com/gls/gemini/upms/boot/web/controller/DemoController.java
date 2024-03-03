@@ -57,7 +57,7 @@ public class DemoController extends BaseController<DemoService, DemoVo> implemen
     @Operation(summary = "获取登录用户", description = "获取登录用户")
     @PostMapping("/getLoginUser")
     public String getLoginUser() {
-        String loginUserName = loginTemplate.getLoginUserRealName().orElse("未登录");
+        String loginUserName = loginTemplate.getLoginUserNickname().orElse("未登录");
         log.info("loginUser {}", loginUserName);
         return loginUserName;
     }
