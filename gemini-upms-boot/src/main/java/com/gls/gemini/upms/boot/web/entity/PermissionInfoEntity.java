@@ -21,13 +21,10 @@ public class PermissionInfoEntity extends BaseEntity {
     public static final String COL_CODE = "code";
     public static final String COL_NAME = "name";
     public static final String COL_DESCRIPTION = "description";
-    public static final String COL_TYPE = "type";
-    public static final String COL_URL = "url";
-    public static final String COL_METHOD = "method";
-    public static final String COL_PID = "pid";
-    public static final String COL_LEVEL = "level";
+    public static final String COL_TYPE_ID = "type_id";
+    public static final String COL_PARENT_ID = "parent_id";
     public static final String COL_SORT = "sort";
-    public static final String COL_STATUS = "status";
+    public static final String COL_COMMAND = "command";
     @Serial
     private static final long serialVersionUID = 1L;
     /**
@@ -43,31 +40,19 @@ public class PermissionInfoEntity extends BaseEntity {
      */
     private String description;
     /**
-     * 权限类型 1:菜单 2:按钮 3:接口 4:其他
+     * 权限类型id 0:公共权限类型
      */
-    private Boolean type;
+    private Long typeId;
     /**
-     * 权限url
+     * 父权限id 0:无父权限
      */
-    private String url;
-    /**
-     * 权限请求方式
-     */
-    private String method;
-    /**
-     * 父id
-     */
-    private Long pid;
-    /**
-     * 层级
-     */
-    private Boolean level;
+    private Long parentId;
     /**
      * 排序
      */
     private Integer sort;
     /**
-     * 状态 0:正常 1:禁用
+     * 命令
      */
-    private Boolean status;
+    private String command;
 }

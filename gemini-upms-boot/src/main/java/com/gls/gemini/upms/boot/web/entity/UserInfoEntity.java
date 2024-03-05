@@ -20,12 +20,14 @@ public class UserInfoEntity extends BaseEntity {
 
     public static final String COL_USERNAME = "username";
     public static final String COL_PASSWORD = "password";
-    public static final String COL_NAME = "name";
-    public static final String COL_NICKNAME = "nickname";
-    public static final String COL_EMAIL = "email";
     public static final String COL_MOBILE = "mobile";
+    public static final String COL_EMAIL = "email";
+    public static final String COL_REAL_NAME = "real_name";
+    public static final String COL_NICK_NAME = "nick_name";
     public static final String COL_AVATAR = "avatar";
-    public static final String COL_STATUS = "status";
+    public static final String COL_LANGUAGE = "language";
+    public static final String COL_LOCALE = "locale";
+    public static final String COL_TIME_ZONE = "time_zone";
     @Serial
     private static final long serialVersionUID = 1L;
     /**
@@ -37,27 +39,35 @@ public class UserInfoEntity extends BaseEntity {
      */
     private String password;
     /**
-     * 姓名
+     * 手机号
      */
-    private String name;
-    /**
-     * 昵称
-     */
-    private String nickname;
+    private String mobile;
     /**
      * 邮箱
      */
     private String email;
     /**
-     * 手机号
+     * 真实姓名
      */
-    private String mobile;
+    private String realName;
+    /**
+     * 昵称
+     */
+    private String nickName;
     /**
      * 头像
      */
     private String avatar;
     /**
-     * 状态 0:正常 1:禁用
+     * 语言
      */
-    private Boolean status;
+    private String language;
+    /**
+     * 区域
+     */
+    private String locale;
+    /**
+     * 时区
+     */
+    private String timeZone;
 }

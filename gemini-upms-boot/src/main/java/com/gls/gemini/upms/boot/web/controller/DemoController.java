@@ -2,13 +2,10 @@ package com.gls.gemini.upms.boot.web.controller;
 
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.model.Bucket;
-import com.gls.gemini.boot.core.base.BaseController;
 import com.gls.gemini.common.core.support.LoginTemplate;
 import com.gls.gemini.starter.aliyun.oss.support.OssTemplate;
 import com.gls.gemini.upms.boot.kafka.KafkaProducer;
 import com.gls.gemini.upms.boot.kafka.KafkaTopicConstants;
-import com.gls.gemini.upms.boot.web.service.DemoService;
-import com.gls.gemini.upms.sdk.feign.DemoFeign;
 import com.gls.gemini.upms.sdk.vo.DemoVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,7 +28,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/demo")
 @Tag(name = "demo", description = "demo数据")
-public class DemoController extends BaseController<DemoService, DemoVo> implements DemoFeign {
+public class DemoController {
 
     @Resource
     private KafkaProducer kafkaProducer;

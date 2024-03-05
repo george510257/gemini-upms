@@ -36,33 +36,21 @@ public class RoleInfoVo extends BaseVo {
     @Schema(title = "角色描述", description = "角色描述")
     private String description;
     /**
-     * 角色类型 1:超级管理员 2:管理员 3:普通用户 4:其他
+     * 角色类型id 0:公共角色类型
      */
-    @ExcelProperty(value = "角色类型 1:超级管理员 2:管理员 3:普通用户 4:其他")
-    @Schema(title = "角色类型 1:超级管理员 2:管理员 3:普通用户 4:其他", description = "角色类型 1:超级管理员 2:管理员 3:普通用户 4:其他")
-    private Boolean type;
+    @ExcelProperty(value = "角色类型id 0:公共角色类型")
+    @Schema(title = "角色类型id 0:公共角色类型", description = "角色类型id 0:公共角色类型")
+    private Long typeId;
     /**
-     * 父id
+     * 父角色id 0:无父角色
      */
-    @ExcelProperty(value = "父id")
-    @Schema(title = "父id", description = "父id")
-    private Long pid;
-    /**
-     * 层级
-     */
-    @ExcelProperty(value = "层级")
-    @Schema(title = "层级", description = "层级")
-    private Boolean level;
+    @ExcelProperty(value = "父角色id 0:无父角色")
+    @Schema(title = "父角色id 0:无父角色", description = "父角色id 0:无父角色")
+    private Long parentId;
     /**
      * 排序
      */
     @ExcelProperty(value = "排序")
     @Schema(title = "排序", description = "排序")
     private Integer sort;
-    /**
-     * 状态 0:正常 1:禁用
-     */
-    @ExcelProperty(value = "状态 0:正常 1:禁用")
-    @Schema(title = "状态 0:正常 1:禁用", description = "状态 0:正常 1:禁用")
-    private Boolean status;
 }

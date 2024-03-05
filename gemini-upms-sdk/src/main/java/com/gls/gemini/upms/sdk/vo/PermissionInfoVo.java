@@ -36,35 +36,17 @@ public class PermissionInfoVo extends BaseVo {
     @Schema(title = "权限描述", description = "权限描述")
     private String description;
     /**
-     * 权限类型 1:菜单 2:按钮 3:接口 4:其他
+     * 权限类型id 0:公共权限类型
      */
-    @ExcelProperty(value = "权限类型 1:菜单 2:按钮 3:接口 4:其他")
-    @Schema(title = "权限类型 1:菜单 2:按钮 3:接口 4:其他", description = "权限类型 1:菜单 2:按钮 3:接口 4:其他")
-    private Boolean type;
+    @ExcelProperty(value = "权限类型id 0:公共权限类型")
+    @Schema(title = "权限类型id 0:公共权限类型", description = "权限类型id 0:公共权限类型")
+    private Long typeId;
     /**
-     * 权限url
+     * 父权限id 0:无父权限
      */
-    @ExcelProperty(value = "权限url")
-    @Schema(title = "权限url", description = "权限url")
-    private String url;
-    /**
-     * 权限请求方式
-     */
-    @ExcelProperty(value = "权限请求方式")
-    @Schema(title = "权限请求方式", description = "权限请求方式")
-    private String method;
-    /**
-     * 父id
-     */
-    @ExcelProperty(value = "父id")
-    @Schema(title = "父id", description = "父id")
-    private Long pid;
-    /**
-     * 层级
-     */
-    @ExcelProperty(value = "层级")
-    @Schema(title = "层级", description = "层级")
-    private Boolean level;
+    @ExcelProperty(value = "父权限id 0:无父权限")
+    @Schema(title = "父权限id 0:无父权限", description = "父权限id 0:无父权限")
+    private Long parentId;
     /**
      * 排序
      */
@@ -72,9 +54,9 @@ public class PermissionInfoVo extends BaseVo {
     @Schema(title = "排序", description = "排序")
     private Integer sort;
     /**
-     * 状态 0:正常 1:禁用
+     * 命令
      */
-    @ExcelProperty(value = "状态 0:正常 1:禁用")
-    @Schema(title = "状态 0:正常 1:禁用", description = "状态 0:正常 1:禁用")
-    private Boolean status;
+    @ExcelProperty(value = "命令")
+    @Schema(title = "命令", description = "命令")
+    private String command;
 }

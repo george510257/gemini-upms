@@ -36,33 +36,21 @@ public class OrganizationInfoVo extends BaseVo {
     @Schema(title = "组织描述", description = "组织描述")
     private String description;
     /**
-     * 组织类型 1:公司 2:部门 3:其他
+     * 组织类型id 0:公共组织类型
      */
-    @ExcelProperty(value = "组织类型 1:公司 2:部门 3:其他")
-    @Schema(title = "组织类型 1:公司 2:部门 3:其他", description = "组织类型 1:公司 2:部门 3:其他")
-    private Boolean type;
+    @ExcelProperty(value = "组织类型id 0:公共组织类型")
+    @Schema(title = "组织类型id 0:公共组织类型", description = "组织类型id 0:公共组织类型")
+    private Long typeId;
     /**
-     * 父id
+     * 父组织id 0:无父组织
      */
-    @ExcelProperty(value = "父id")
-    @Schema(title = "父id", description = "父id")
-    private Long pid;
-    /**
-     * 层级
-     */
-    @ExcelProperty(value = "层级")
-    @Schema(title = "层级", description = "层级")
-    private Boolean level;
+    @ExcelProperty(value = "父组织id 0:无父组织")
+    @Schema(title = "父组织id 0:无父组织", description = "父组织id 0:无父组织")
+    private Long parentId;
     /**
      * 排序
      */
     @ExcelProperty(value = "排序")
     @Schema(title = "排序", description = "排序")
     private Integer sort;
-    /**
-     * 状态 0:正常 1:禁用
-     */
-    @ExcelProperty(value = "状态 0:正常 1:禁用")
-    @Schema(title = "状态 0:正常 1:禁用", description = "状态 0:正常 1:禁用")
-    private Boolean status;
 }

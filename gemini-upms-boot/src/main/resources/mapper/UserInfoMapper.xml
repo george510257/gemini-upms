@@ -6,12 +6,14 @@
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
-        <result column="name" property="name"/>
-        <result column="nickname" property="nickname"/>
-        <result column="email" property="email"/>
         <result column="mobile" property="mobile"/>
+        <result column="email" property="email"/>
+        <result column="real_name" property="realName"/>
+        <result column="nick_name" property="nickName"/>
         <result column="avatar" property="avatar"/>
-        <result column="status" property="status"/>
+        <result column="language" property="language"/>
+        <result column="locale" property="locale"/>
+        <result column="time_zone" property="timeZone"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="version" property="version"/>
         <result column="deleted" property="deleted"/>
@@ -24,7 +26,7 @@
     </resultMap>
 
     <sql id="userInfoSql">
-        id,username,password,name,nickname,email,mobile,avatar,status,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
+        id,username,password,mobile,email,real_name,nick_name,avatar,language,locale,time_zone,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
 
 </mapper>

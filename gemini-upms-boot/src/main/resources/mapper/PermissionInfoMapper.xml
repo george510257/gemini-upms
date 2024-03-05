@@ -7,13 +7,10 @@
         <result column="code" property="code"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
-        <result column="type" property="type"/>
-        <result column="url" property="url"/>
-        <result column="method" property="method"/>
-        <result column="pid" property="pid"/>
-        <result column="level" property="level"/>
+        <result column="type_id" property="typeId"/>
+        <result column="parent_id" property="parentId"/>
         <result column="sort" property="sort"/>
-        <result column="status" property="status"/>
+        <result column="command" property="command"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="version" property="version"/>
         <result column="deleted" property="deleted"/>
@@ -26,7 +23,7 @@
     </resultMap>
 
     <sql id="permissionInfoSql">
-        id,code,name,description,type,url,method,pid,level,sort,status,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
+        id,code,name,description,type_id,parent_id,sort,command,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
 
 </mapper>

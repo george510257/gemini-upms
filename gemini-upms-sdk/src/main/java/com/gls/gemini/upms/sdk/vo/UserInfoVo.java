@@ -30,17 +30,11 @@ public class UserInfoVo extends BaseVo {
     @Schema(title = "密码", description = "密码")
     private String password;
     /**
-     * 姓名
+     * 手机号
      */
-    @ExcelProperty(value = "姓名")
-    @Schema(title = "姓名", description = "姓名")
-    private String name;
-    /**
-     * 昵称
-     */
-    @ExcelProperty(value = "昵称")
-    @Schema(title = "昵称", description = "昵称")
-    private String nickname;
+    @ExcelProperty(value = "手机号")
+    @Schema(title = "手机号", description = "手机号")
+    private String mobile;
     /**
      * 邮箱
      */
@@ -48,11 +42,17 @@ public class UserInfoVo extends BaseVo {
     @Schema(title = "邮箱", description = "邮箱")
     private String email;
     /**
-     * 手机号
+     * 真实姓名
      */
-    @ExcelProperty(value = "手机号")
-    @Schema(title = "手机号", description = "手机号")
-    private String mobile;
+    @ExcelProperty(value = "真实姓名")
+    @Schema(title = "真实姓名", description = "真实姓名")
+    private String realName;
+    /**
+     * 昵称
+     */
+    @ExcelProperty(value = "昵称")
+    @Schema(title = "昵称", description = "昵称")
+    private String nickName;
     /**
      * 头像
      */
@@ -60,9 +60,21 @@ public class UserInfoVo extends BaseVo {
     @Schema(title = "头像", description = "头像")
     private String avatar;
     /**
-     * 状态 0:正常 1:禁用
+     * 语言
      */
-    @ExcelProperty(value = "状态 0:正常 1:禁用")
-    @Schema(title = "状态 0:正常 1:禁用", description = "状态 0:正常 1:禁用")
-    private Boolean status;
+    @ExcelProperty(value = "语言")
+    @Schema(title = "语言", description = "语言")
+    private String language;
+    /**
+     * 区域
+     */
+    @ExcelProperty(value = "区域")
+    @Schema(title = "区域", description = "区域")
+    private String locale;
+    /**
+     * 时区
+     */
+    @ExcelProperty(value = "时区")
+    @Schema(title = "时区", description = "时区")
+    private String timeZone;
 }

@@ -21,11 +21,9 @@ public class OrganizationInfoEntity extends BaseEntity {
     public static final String COL_CODE = "code";
     public static final String COL_NAME = "name";
     public static final String COL_DESCRIPTION = "description";
-    public static final String COL_TYPE = "type";
-    public static final String COL_PID = "pid";
-    public static final String COL_LEVEL = "level";
+    public static final String COL_TYPE_ID = "type_id";
+    public static final String COL_PARENT_ID = "parent_id";
     public static final String COL_SORT = "sort";
-    public static final String COL_STATUS = "status";
     @Serial
     private static final long serialVersionUID = 1L;
     /**
@@ -41,23 +39,15 @@ public class OrganizationInfoEntity extends BaseEntity {
      */
     private String description;
     /**
-     * 组织类型 1:公司 2:部门 3:其他
+     * 组织类型id 0:公共组织类型
      */
-    private Boolean type;
+    private Long typeId;
     /**
-     * 父id
+     * 父组织id 0:无父组织
      */
-    private Long pid;
-    /**
-     * 层级
-     */
-    private Boolean level;
+    private Long parentId;
     /**
      * 排序
      */
     private Integer sort;
-    /**
-     * 状态 0:正常 1:禁用
-     */
-    private Boolean status;
 }
