@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <name>Gemini UPMS</name>
-    <description>用户权限服务</description>
+    <description>用户权限管理服务</description>
 
     <modules>
         <module>gemini-upms-boot</module>
