@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.Date;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 客户端信息表 Vo
@@ -42,49 +44,49 @@ public class ClientInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "客户端认证方式")
     @Schema(title = "客户端认证方式", description = "客户端认证方式")
-    private String clientAuthenticationMethods;
+    private Set<String> clientAuthenticationMethods;
     /**
      * 授权类型
      */
     @ExcelProperty(value = "授权类型")
     @Schema(title = "授权类型", description = "授权类型")
-    private String authorizedGrantTypes;
+    private Set<String> authorizedGrantTypes;
     /**
      * 重定向地址
      */
     @ExcelProperty(value = "重定向地址")
     @Schema(title = "重定向地址", description = "重定向地址")
-    private String redirectUris;
+    private Set<String> redirectUris;
     /**
      * 登出重定向地址
      */
     @ExcelProperty(value = "登出重定向地址")
     @Schema(title = "登出重定向地址", description = "登出重定向地址")
-    private String postLogoutRedirectUris;
+    private Set<String> postLogoutRedirectUris;
     /**
      * 作用域
      */
     @ExcelProperty(value = "作用域")
     @Schema(title = "作用域", description = "作用域")
-    private String scopes;
+    private Set<String> scopes;
     /**
      * 客户端设置
      */
     @ExcelProperty(value = "客户端设置")
     @Schema(title = "客户端设置", description = "客户端设置")
-    private String clientSettings;
+    private Map<String, Object> clientSettings;
     /**
      * token设置
      */
     @ExcelProperty(value = "token设置")
     @Schema(title = "token设置", description = "token设置")
-    private String tokenSettings;
+    private Map<String, Object> tokenSettings;
     /**
      * 附加信息
      */
     @ExcelProperty(value = "附加信息")
     @Schema(title = "附加信息", description = "附加信息")
-    private String additionalInformation;
+    private Map<String, Object> additionalInformation;
     /**
      * 客户端id发放时间
      */

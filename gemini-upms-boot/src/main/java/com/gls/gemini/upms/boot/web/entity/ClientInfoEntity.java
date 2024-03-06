@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.util.Date;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 客户端信息表 实体类
@@ -49,35 +51,35 @@ public class ClientInfoEntity extends BaseEntity {
     /**
      * 客户端认证方式
      */
-    private String clientAuthenticationMethods;
+    private Set<String> clientAuthenticationMethods;
     /**
      * 授权类型
      */
-    private String authorizedGrantTypes;
+    private Set<String> authorizedGrantTypes;
     /**
      * 重定向地址
      */
-    private String redirectUris;
+    private Set<String> redirectUris;
     /**
      * 登出重定向地址
      */
-    private String postLogoutRedirectUris;
+    private Set<String> postLogoutRedirectUris;
     /**
      * 作用域
      */
-    private String scopes;
+    private Set<String> scopes;
     /**
      * 客户端设置
      */
-    private String clientSettings;
+    private Map<String, Object> clientSettings;
     /**
      * token设置
      */
-    private String tokenSettings;
+    private Map<String, Object> tokenSettings;
     /**
      * 附加信息
      */
-    private String additionalInformation;
+    private Map<String, Object> additionalInformation;
     /**
      * 客户端id发放时间
      */

@@ -20,4 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clientInfo")
 @Tag(name = "clientInfo", description = "客户端信息表")
 public class ClientInfoController extends BaseController<ClientInfoService, ClientInfoVo> implements ClientInfoFeign {
+    @Override
+    public ClientInfoVo getByClientId(String clientId) {
+        return null;
+    }
 }
