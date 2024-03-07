@@ -21,9 +21,45 @@
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
     </resultMap>
+    <resultMap id="permissionVoMap" type="com.gls.gemini.sdk.core.vo.PermissionVo">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="command" property="command"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="version" property="version"/>
+        <result column="deleted" property="deleted"/>
+        <result column="create_user_id" property="createUserId"/>
+        <result column="update_user_id" property="updateUserId"/>
+        <result column="create_user_name" property="createUserName"/>
+        <result column="update_user_name" property="updateUserName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="type_name" property="type"/>
+        <result column="weight" property="weight"/>
+    </resultMap>
 
     <sql id="permissionInfoSql">
         id,code,name,description,type_id,parent_id,sort,command,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
+    <select id="listByUserId" resultMap="permissionVoMap">
+        select tpi.*,
+               tpt.name as type_name,
+               tpi.sort as weight
+        from t_permission_info tpi
+                 left join t_permission_type tpt
+                           on tpi.type_id = tpt.id
+                               and tpi.deleted = tpt.deleted
+                 inner join t_role_permission_rel trpr
+                            on tpi.id = trpr.permission_id
+                                and tpi.deleted = trpr.deleted
+                 inner join t_user_role_rel turr
+                            on trpr.role_id = turr.role_id
+                                and trpr.deleted = turr.deleted
+        where turr.user_id = #{userId}
+          and tpi.deleted = 0;
+    </select>
 
 </mapper>

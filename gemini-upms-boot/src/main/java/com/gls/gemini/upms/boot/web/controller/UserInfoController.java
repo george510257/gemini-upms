@@ -23,10 +23,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/userInfo")
 @Tag(name = "userInfo", description = "用户信息表")
 public class UserInfoController extends BaseController<UserInfoService, UserInfoVo> implements UserInfoFeign {
+    /**
+     * 根据用户名获取用户信息
+     *
+     * @param username 用户名
+     * @return 用户信息
+     */
     @Override
     @Operation(summary = "根据用户名获取用户信息", description = "根据用户名获取用户信息")
     @Parameter(name = "username", description = "用户名")
     public UserDetails loadUserByUsername(String username) {
-        return null;
+        return this.service.loadUserByUsername(username);
     }
 }
