@@ -65,3 +65,7 @@ gemini:
         time-to-live: 3600000
 server:
   port: 8083
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
