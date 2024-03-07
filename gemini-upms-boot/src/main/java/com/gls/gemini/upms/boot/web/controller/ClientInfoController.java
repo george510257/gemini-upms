@@ -1,6 +1,8 @@
 package com.gls.gemini.upms.boot.web.controller;
 
 import com.gls.gemini.boot.core.base.BaseController;
+import com.gls.gemini.common.core.domain.Result;
+import com.gls.gemini.common.core.enums.ResultEnums;
 import com.gls.gemini.upms.boot.web.service.ClientInfoService;
 import com.gls.gemini.upms.sdk.feign.ClientInfoFeign;
 import com.gls.gemini.upms.sdk.vo.ClientInfoVo;
@@ -31,7 +33,7 @@ public class ClientInfoController extends BaseController<ClientInfoService, Clie
     @Override
     @Operation(summary = "根据客户端id获取客户端信息", description = "根据客户端id获取客户端信息")
     @Parameter(name = "clientId", description = "客户端id")
-    public ClientInfoVo getByClientId(String clientId) {
-        return this.service.getByClientId(clientId);
+    public Result<ClientInfoVo> getByClientId(String clientId) {
+        return ResultEnums.SUCCESS.getResult(service.getByClientId(clientId));
     }
 }

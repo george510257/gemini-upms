@@ -1,5 +1,6 @@
 package com.gls.gemini.upms.sdk.feign;
 
+import com.gls.gemini.common.core.domain.Result;
 import com.gls.gemini.sdk.core.feign.BaseFeign;
 import com.gls.gemini.upms.sdk.vo.ClientInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -21,5 +22,5 @@ public interface ClientInfoFeign extends BaseFeign<ClientInfoVo> {
      * @return 客户端信息
      */
     @PostMapping("/getByClientId")
-    ClientInfoVo getByClientId(@RequestParam String clientId);
+    Result<ClientInfoVo> getByClientId(@RequestParam String clientId);
 }

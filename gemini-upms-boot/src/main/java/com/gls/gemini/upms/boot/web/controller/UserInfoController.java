@@ -1,6 +1,9 @@
 package com.gls.gemini.upms.boot.web.controller;
 
 import com.gls.gemini.boot.core.base.BaseController;
+import com.gls.gemini.common.core.domain.Result;
+import com.gls.gemini.common.core.enums.ResultEnums;
+import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.upms.boot.web.service.UserInfoService;
 import com.gls.gemini.upms.sdk.feign.UserInfoFeign;
 import com.gls.gemini.upms.sdk.vo.UserInfoVo;
@@ -8,7 +11,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +34,7 @@ public class UserInfoController extends BaseController<UserInfoService, UserInfo
     @Override
     @Operation(summary = "根据用户名获取用户信息", description = "根据用户名获取用户信息")
     @Parameter(name = "username", description = "用户名")
-    public UserDetails loadUserByUsername(String username) {
-        return this.service.loadUserByUsername(username);
+    public Result<UserVo> loadUserByUsername(String username) {
+        return ResultEnums.SUCCESS.getResult(service.loadUserByUsername(username));
     }
 }

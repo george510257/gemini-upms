@@ -1,9 +1,10 @@
 package com.gls.gemini.upms.sdk.feign;
 
+import com.gls.gemini.common.core.domain.Result;
 import com.gls.gemini.sdk.core.feign.BaseFeign;
+import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.upms.sdk.vo.UserInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,5 +23,5 @@ public interface UserInfoFeign extends BaseFeign<UserInfoVo> {
      * @return 用户信息
      */
     @PostMapping("/loadUserByUsername")
-    UserDetails loadUserByUsername(@RequestParam String username);
+    Result<UserVo> loadUserByUsername(@RequestParam String username);
 }
