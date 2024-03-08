@@ -6,6 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * 授权信息表 Vo
  *
@@ -40,13 +43,13 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "作用域")
     @Schema(title = "作用域", description = "作用域")
-    private String scopes;
+    private Set<String> scopes;
     /**
      * 属性
      */
     @ExcelProperty(value = "属性")
     @Schema(title = "属性", description = "属性")
-    private String attributes;
+    private Map<String, Object> attributes;
     /**
      * 是否同意 0:否 1:是
      */

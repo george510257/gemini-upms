@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 授权信息表 实体类
@@ -41,11 +43,11 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 作用域
      */
-    private String scopes;
+    private Set<String> scopes;
     /**
      * 属性
      */
-    private String attributes;
+    private Map<String, Object> attributes;
     /**
      * 是否同意 0:否 1:是
      */

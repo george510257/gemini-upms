@@ -12,6 +12,35 @@ set names utf8mb4;
 
 -- 2. 创建表
 -- ----------------------------
+--  字典信息表
+-- ----------------------------
+drop table if exists t_dict_info;
+
+create table t_dict_info
+(
+    id               bigint unsigned auto_increment                                         not null comment '主键id',
+    code             varchar(100)     default ''                                            not null comment '字典编码',
+    name             varchar(100)     default ''                                            not null comment '字典名称',
+    description      varchar(1000)    default ''                                            not null comment '字典描述',
+    type_id          bigint unsigned  default 0                                             not null comment '字典类型id 0:公共字典类型',
+    parent_id        bigint unsigned  default 0                                             not null comment '父字典id 0:无父字典',
+    sort             int unsigned     default 0                                             not null comment '排序',
+    tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version          int unsigned     default 0                                             not null comment '版本号',
+    deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
+    create_user_id   bigint unsigned  default 0                                             not null comment '创建人id',
+    create_user_name varchar(32)      default ''                                            not null comment '创建人姓名',
+    create_time      timestamp        default current_timestamp                             not null comment '创建时间',
+    update_user_id   bigint unsigned  default 0                                             not null comment '更新人id',
+    update_user_name varchar(32)      default ''                                            not null comment '更新人姓名',
+    update_time      timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
+    primary key (id),
+    unique key uk_code (code),
+    unique key uk_name (name)
+) engine = InnoDB
+  default charset = utf8mb4 comment '字典信息表';
+
+-- ----------------------------
 --  客户端信息表
 -- ----------------------------
 drop table if exists t_client_info;
@@ -20,7 +49,9 @@ create table t_client_info
 (
     id                            bigint unsigned auto_increment                                         not null comment '主键id',
     client_id                     varchar(100)     default ''                                            not null comment '客户端id',
+    client_id_issued_at           timestamp        default current_timestamp                             not null comment '客户端id发放时间',
     client_secret                 varchar(100)     default ''                                            not null comment '客户端密钥',
+    client_secret_expires_at      timestamp        default '2038-01-19 03:14:07'                         not null comment '客户端密钥过期时间',
     client_name                   varchar(100)     default ''                                            not null comment '客户端名称',
     client_authentication_methods varchar(1000)    default ''                                            not null comment '客户端认证方式',
     authorized_grant_types        varchar(1000)    default ''                                            not null comment '授权类型',
@@ -30,8 +61,6 @@ create table t_client_info
     client_settings               varchar(2000)    default ''                                            not null comment '客户端设置',
     token_settings                varchar(2000)    default ''                                            not null comment 'token设置',
     additional_information        varchar(2000)    default ''                                            not null comment '附加信息',
-    client_id_issued_at           timestamp        default current_timestamp                             not null comment '客户端id发放时间',
-    client_secret_expires_at      timestamp        default '2038-01-19 03:14:07'                         not null comment '客户端密钥过期时间',
     tenant_id                     bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
     version                       int unsigned     default 0                                             not null comment '版本号',
     deleted                       tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
@@ -54,13 +83,64 @@ drop table if exists t_authorization_info;
 
 create table t_authorization_info
 (
+    id                            bigint unsigned auto_increment                                         not null comment '主键id',
+    client_id                     bigint unsigned  default 0                                             not null comment '客户端id',
+    user_id                       bigint unsigned  default 0                                             not null comment '用户id',
+    grant_type                    varchar(100)     default ''                                            not null comment '授权类型',
+    scopes                        varchar(1000)    default ''                                            not null comment '作用域',
+    attributes                    varchar(2000)    default ''                                            not null comment '属性',
+    state                         varchar(500)     default ''                                            not null comment '状态',
+    authorization_code_value      varchar(100)     default ''                                            not null comment '授权码值',
+    authorization_code_issued_at  timestamp        default current_timestamp                             not null comment '授权码发放时间',
+    authorization_code_expires_at timestamp        default '2038-01-19 03:14:07'                         not null comment '授权码过期时间',
+    authorization_code_metadata   varchar(2000)    default ''                                            not null comment '授权码元数据',
+    access_token_value            varchar(100)     default ''                                            not null comment '访问token值',
+    access_token_issued_at        timestamp        default current_timestamp                             not null comment '访问token发放时间',
+    access_token_expires_at       timestamp        default '2038-01-19 03:14:07'                         not null comment '访问token过期时间',
+    access_token_metadata         varchar(2000)    default ''                                            not null comment '访问token元数据',
+    access_token_type             varchar(100)     default ''                                            not null comment '访问token类型',
+    access_token_scopes           varchar(1000)    default ''                                            not null comment '访问token作用域',
+    refresh_token_value           varchar(100)     default ''                                            not null comment '刷新token值',
+    refresh_token_issued_at       timestamp        default current_timestamp                             not null comment '刷新token发放时间',
+    refresh_token_expires_at      timestamp        default '2038-01-19 03:14:07'                         not null comment '刷新token过期时间',
+    refresh_token_metadata        varchar(2000)    default ''                                            not null comment '刷新token元数据',
+    oidc_id_token_value           varchar(100)     default ''                                            not null comment 'oidc id token值',
+    oidc_id_token_issued_at       timestamp        default current_timestamp                             not null comment 'oidc id token发放时间',
+    oidc_id_token_expires_at      timestamp        default '2038-01-19 03:14:07'                         not null comment 'oidc id token过期时间',
+    oidc_id_token_metadata        varchar(2000)    default ''                                            not null comment 'oidc id token元数据',
+    user_code_value               varchar(100)     default ''                                            not null comment '用户code值',
+    user_code_issued_at           timestamp        default current_timestamp                             not null comment '用户code发放时间',
+    user_code_expires_at          timestamp        default '2038-01-19 03:14:07'                         not null comment '用户code过期时间',
+    user_code_metadata            varchar(2000)    default ''                                            not null comment '用户code元数据',
+    device_code_value             varchar(100)     default ''                                            not null comment '设备code值',
+    device_code_issued_at         timestamp        default current_timestamp                             not null comment '设备code发放时间',
+    device_code_expires_at        timestamp        default '2038-01-19 03:14:07'                         not null comment '设备code过期时间',
+    device_code_metadata          varchar(2000)    default ''                                            not null comment '设备code元数据',
+    tenant_id                     bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
+    version                       int unsigned     default 0                                             not null comment '版本号',
+    deleted                       tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
+    create_user_id                bigint unsigned  default 0                                             not null comment '创建人id',
+    create_user_name              varchar(32)      default ''                                            not null comment '创建人姓名',
+    create_time                   timestamp        default current_timestamp                             not null comment '创建时间',
+    update_user_id                bigint unsigned  default 0                                             not null comment '更新人id',
+    update_user_name              varchar(32)      default ''                                            not null comment '更新人姓名',
+    update_time                   timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
+    primary key (id),
+    unique key uk_client_id_user_id (client_id, user_id)
+) engine = InnoDB
+  default charset = utf8mb4 comment '授权信息表';
+
+-- ----------------------------
+--  授权同意信息表
+-- ----------------------------
+drop table if exists t_authorization_consent_info;
+
+create table t_authorization_consent_info
+(
     id               bigint unsigned auto_increment                                         not null comment '主键id',
     client_id        bigint unsigned  default 0                                             not null comment '客户端id',
     user_id          bigint unsigned  default 0                                             not null comment '用户id',
-    grant_type       varchar(100)     default ''                                            not null comment '授权类型',
     scopes           varchar(1000)    default ''                                            not null comment '作用域',
-    attributes       varchar(2000)    default ''                                            not null comment '属性',
-    consent          tinyint unsigned default 0                                             not null comment '是否同意 0:否 1:是',
     tenant_id        bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
     version          int unsigned     default 0                                             not null comment '版本号',
     deleted          tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
@@ -73,37 +153,7 @@ create table t_authorization_info
     primary key (id),
     unique key uk_client_id_user_id (client_id, user_id)
 ) engine = InnoDB
-  default charset = utf8mb4 comment '授权信息表';
-
--- ----------------------------
---  token信息表
--- ----------------------------
-drop table if exists t_token_info;
-
-create table t_token_info
-(
-    id                  bigint unsigned auto_increment                                         not null comment '主键id',
-    token_value         varchar(100)     default ''                                            not null comment 'token值',
-    token_type          varchar(100)     default ''                                            not null comment 'token类型 token_type=authorization_code|access_token|refresh_token|oidc_id_token|user_code|device_code',
-    issued_at           timestamp        default current_timestamp                             not null comment '发放时间',
-    expires_at          timestamp        default '2038-01-19 03:14:07'                         not null comment '过期时间',
-    metadata            varchar(2000)    default ''                                            not null comment '元数据',
-    access_token_type   varchar(100)     default ''                                            not null comment '访问token类型 token_type=access_token时有效',
-    access_token_scopes varchar(1000)    default ''                                            not null comment '访问token作用域 token_type=access_token时有效',
-    authorization_id    bigint unsigned  default 0                                             not null comment '授权id',
-    tenant_id           bigint unsigned  default 0                                             not null comment '租户id 0:公共租户',
-    version             int unsigned     default 0                                             not null comment '版本号',
-    deleted             tinyint unsigned default 0                                             not null comment '是否删除 0:否 1:是',
-    create_user_id      bigint unsigned  default 0                                             not null comment '创建人id',
-    create_user_name    varchar(32)      default ''                                            not null comment '创建人姓名',
-    create_time         timestamp        default current_timestamp                             not null comment '创建时间',
-    update_user_id      bigint unsigned  default 0                                             not null comment '更新人id',
-    update_user_name    varchar(32)      default ''                                            not null comment '更新人姓名',
-    update_time         timestamp        default current_timestamp on update current_timestamp not null comment '更新时间',
-    primary key (id),
-    unique key uk_token_type_authorization_id (token_type, authorization_id)
-) engine = InnoDB
-  default charset = utf8mb4 comment 'token信息表';
+  default charset = utf8mb4 comment '授权同意信息表';
 
 -- ----------------------------
 --  用户信息表
