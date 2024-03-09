@@ -22,7 +22,9 @@ import java.util.Set;
 public class ClientInfoEntity extends BaseEntity {
 
     public static final String COL_CLIENT_ID = "client_id";
+    public static final String COL_CLIENT_ID_ISSUED_AT = "client_id_issued_at";
     public static final String COL_CLIENT_SECRET = "client_secret";
+    public static final String COL_CLIENT_SECRET_EXPIRES_AT = "client_secret_expires_at";
     public static final String COL_CLIENT_NAME = "client_name";
     public static final String COL_CLIENT_AUTHENTICATION_METHODS = "client_authentication_methods";
     public static final String COL_AUTHORIZED_GRANT_TYPES = "authorized_grant_types";
@@ -32,8 +34,6 @@ public class ClientInfoEntity extends BaseEntity {
     public static final String COL_CLIENT_SETTINGS = "client_settings";
     public static final String COL_TOKEN_SETTINGS = "token_settings";
     public static final String COL_ADDITIONAL_INFORMATION = "additional_information";
-    public static final String COL_CLIENT_ID_ISSUED_AT = "client_id_issued_at";
-    public static final String COL_CLIENT_SECRET_EXPIRES_AT = "client_secret_expires_at";
     @Serial
     private static final long serialVersionUID = 1L;
     /**
@@ -41,9 +41,17 @@ public class ClientInfoEntity extends BaseEntity {
      */
     private String clientId;
     /**
+     * 客户端id发放时间
+     */
+    private Date clientIdIssuedAt;
+    /**
      * 客户端密钥
      */
     private String clientSecret;
+    /**
+     * 客户端密钥过期时间
+     */
+    private Date clientSecretExpiresAt;
     /**
      * 客户端名称
      */
@@ -80,12 +88,4 @@ public class ClientInfoEntity extends BaseEntity {
      * 附加信息
      */
     private Map<String, Object> additionalInformation;
-    /**
-     * 客户端id发放时间
-     */
-    private Date clientIdIssuedAt;
-    /**
-     * 客户端密钥过期时间
-     */
-    private Date clientSecretExpiresAt;
 }

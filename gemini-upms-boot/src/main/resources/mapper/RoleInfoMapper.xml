@@ -44,12 +44,12 @@
     </sql>
     <select id="listByUserId" resultMap="roleVoMap">
         select tri.*,
-               trt.name as type_name,
+               tdi.name as type_name,
                tri.sort as weight
         from t_role_info tri
-                 left join t_role_type trt
-                           on tri.type_id = trt.id
-                               and tri.deleted = trt.deleted
+                 left join t_dict_info tdi
+                           on tri.type_id = tdi.id
+                               and tri.deleted = tdi.deleted
                  inner join t_user_role_rel turr
                             on tri.id = turr.role_id
                                 and tri.deleted = turr.deleted

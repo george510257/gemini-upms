@@ -28,11 +28,23 @@ public class ClientInfoVo extends BaseVo {
     @Schema(title = "客户端id", description = "客户端id")
     private String clientId;
     /**
+     * 客户端id发放时间
+     */
+    @ExcelProperty(value = "客户端id发放时间")
+    @Schema(title = "客户端id发放时间", description = "客户端id发放时间")
+    private Date clientIdIssuedAt;
+    /**
      * 客户端密钥
      */
     @ExcelProperty(value = "客户端密钥")
     @Schema(title = "客户端密钥", description = "客户端密钥")
     private String clientSecret;
+    /**
+     * 客户端密钥过期时间
+     */
+    @ExcelProperty(value = "客户端密钥过期时间")
+    @Schema(title = "客户端密钥过期时间", description = "客户端密钥过期时间")
+    private Date clientSecretExpiresAt;
     /**
      * 客户端名称
      */
@@ -87,16 +99,4 @@ public class ClientInfoVo extends BaseVo {
     @ExcelProperty(value = "附加信息")
     @Schema(title = "附加信息", description = "附加信息")
     private Map<String, Object> additionalInformation;
-    /**
-     * 客户端id发放时间
-     */
-    @ExcelProperty(value = "客户端id发放时间")
-    @Schema(title = "客户端id发放时间", description = "客户端id发放时间")
-    private Date clientIdIssuedAt;
-    /**
-     * 客户端密钥过期时间
-     */
-    @ExcelProperty(value = "客户端密钥过期时间")
-    @Schema(title = "客户端密钥过期时间", description = "客户端密钥过期时间")
-    private Date clientSecretExpiresAt;
 }

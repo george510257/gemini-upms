@@ -6,10 +6,36 @@
         <id column="id" property="id"/>
         <result column="client_id" property="clientId"/>
         <result column="user_id" property="userId"/>
-        <result column="grant_type" property="grantType"/>
-        <result column="scopes" property="scopes"/>
+        <result column="authorization_grant_type" property="authorizationGrantType"/>
+        <result column="authorized_scopes" property="authorizedScopes"/>
         <result column="attributes" property="attributes"/>
-        <result column="consent" property="consent"/>
+        <result column="state" property="state"/>
+        <result column="authorization_code_value" property="authorizationCodeValue"/>
+        <result column="authorization_code_issued_at" property="authorizationCodeIssuedAt"/>
+        <result column="authorization_code_expires_at" property="authorizationCodeExpiresAt"/>
+        <result column="authorization_code_metadata" property="authorizationCodeMetadata"/>
+        <result column="access_token_value" property="accessTokenValue"/>
+        <result column="access_token_issued_at" property="accessTokenIssuedAt"/>
+        <result column="access_token_expires_at" property="accessTokenExpiresAt"/>
+        <result column="access_token_metadata" property="accessTokenMetadata"/>
+        <result column="access_token_type" property="accessTokenType"/>
+        <result column="access_token_scopes" property="accessTokenScopes"/>
+        <result column="refresh_token_value" property="refreshTokenValue"/>
+        <result column="refresh_token_issued_at" property="refreshTokenIssuedAt"/>
+        <result column="refresh_token_expires_at" property="refreshTokenExpiresAt"/>
+        <result column="refresh_token_metadata" property="refreshTokenMetadata"/>
+        <result column="oidc_id_token_value" property="oidcIdTokenValue"/>
+        <result column="oidc_id_token_issued_at" property="oidcIdTokenIssuedAt"/>
+        <result column="oidc_id_token_expires_at" property="oidcIdTokenExpiresAt"/>
+        <result column="oidc_id_token_metadata" property="oidcIdTokenMetadata"/>
+        <result column="user_code_value" property="userCodeValue"/>
+        <result column="user_code_issued_at" property="userCodeIssuedAt"/>
+        <result column="user_code_expires_at" property="userCodeExpiresAt"/>
+        <result column="user_code_metadata" property="userCodeMetadata"/>
+        <result column="device_code_value" property="deviceCodeValue"/>
+        <result column="device_code_issued_at" property="deviceCodeIssuedAt"/>
+        <result column="device_code_expires_at" property="deviceCodeExpiresAt"/>
+        <result column="device_code_metadata" property="deviceCodeMetadata"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="version" property="version"/>
         <result column="deleted" property="deleted"/>
@@ -22,7 +48,7 @@
     </resultMap>
 
     <sql id="authorizationInfoSql">
-        id,client_id,user_id,grant_type,scopes,attributes,consent,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
+        id,client_id,user_id,authorization_grant_type,authorized_scopes,attributes,state,authorization_code_value,authorization_code_issued_at,authorization_code_expires_at,authorization_code_metadata,access_token_value,access_token_issued_at,access_token_expires_at,access_token_metadata,access_token_type,access_token_scopes,refresh_token_value,refresh_token_issued_at,refresh_token_expires_at,refresh_token_metadata,oidc_id_token_value,oidc_id_token_issued_at,oidc_id_token_expires_at,oidc_id_token_metadata,user_code_value,user_code_issued_at,user_code_expires_at,user_code_metadata,device_code_value,device_code_issued_at,device_code_expires_at,device_code_metadata,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
 
 </mapper>

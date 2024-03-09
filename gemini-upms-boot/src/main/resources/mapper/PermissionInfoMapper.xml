@@ -46,12 +46,12 @@
     </sql>
     <select id="listByUserId" resultMap="permissionVoMap">
         select tpi.*,
-               tpt.name as type_name,
+               tdi.name as type_name,
                tpi.sort as weight
         from t_permission_info tpi
-                 left join t_permission_type tpt
-                           on tpi.type_id = tpt.id
-                               and tpi.deleted = tpt.deleted
+                 left join t_dict_info tdi
+                           on tpi.type_id = tdi.id
+                               and tpi.deleted = tdi.deleted
                  inner join t_role_permission_rel trpr
                             on tpi.id = trpr.permission_id
                                 and tpi.deleted = trpr.deleted

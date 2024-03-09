@@ -44,12 +44,12 @@
     </sql>
     <select id="listByUserId" resultMap="organizationVoMap">
         select toi.*,
-               tot.name as type_name,
+               tdi.name as type_name,
                toi.sort as weight
         from t_organization_info toi
-                 left join t_organization_type tot
-                           on toi.type_id = tot.id
-                               and toi.deleted = tot.deleted
+                 left join t_dict_info tdi
+                           on toi.type_id = tdi.id
+                               and toi.deleted = tdi.deleted
                  inner join t_user_organization_rel tuor
                             on toi.id = tuor.organization_id
                                 and toi.deleted = tuor.deleted
