@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * 用户信息表 实体类
@@ -65,9 +67,9 @@ public class UserInfoEntity extends BaseEntity {
     /**
      * 区域
      */
-    private String locale;
+    private Locale locale;
     /**
      * 时区
      */
-    private String timeZone;
+    private TimeZone timeZone;
 }

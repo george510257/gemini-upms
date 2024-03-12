@@ -54,7 +54,7 @@ public class DemoController {
     @Operation(summary = "获取登录用户", description = "获取登录用户")
     @PostMapping("/getLoginUser")
     public String getLoginUser() {
-        String loginUserName = loginTemplate.getLoginUserNickname().orElse("未登录");
+        String loginUserName = loginTemplate.getLoginUserNickName().orElse("未登录");
         log.info("loginUser {}", loginUserName);
         return loginUserName;
     }

@@ -6,6 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Locale;
+import java.util.TimeZone;
+
 /**
  * 用户信息表 Vo
  *
@@ -70,11 +73,11 @@ public class UserInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "区域")
     @Schema(title = "区域", description = "区域")
-    private String locale;
+    private Locale locale;
     /**
      * 时区
      */
     @ExcelProperty(value = "时区")
     @Schema(title = "时区", description = "时区")
-    private String timeZone;
+    private TimeZone timeZone;
 }
