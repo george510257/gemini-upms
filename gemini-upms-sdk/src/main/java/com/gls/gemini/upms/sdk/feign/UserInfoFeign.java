@@ -6,6 +6,7 @@ import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.upms.sdk.vo.UserInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -24,4 +25,7 @@ public interface UserInfoFeign extends BaseFeign<UserInfoVo> {
      */
     @PostMapping("/loadUserByUsername")
     Result<UserVo> loadUserByUsername(@RequestParam String username);
+
+    @PostMapping("/saveUser")
+    void saveUser(@RequestBody UserVo userVo);
 }

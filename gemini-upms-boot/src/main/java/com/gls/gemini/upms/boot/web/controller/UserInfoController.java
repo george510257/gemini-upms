@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +37,12 @@ public class UserInfoController extends BaseController<UserInfoService, UserInfo
     @Parameter(name = "username", description = "用户名")
     public Result<UserVo> loadUserByUsername(String username) {
         return ResultEnums.SUCCESS.getResult(service.loadUserByUsername(username));
+    }
+
+    @Override
+    @Operation(summary = "保存用户信息", description = "保存用户信息")
+    @Parameter(name = "userVo", description = "用户信息")
+    public void saveUser(@RequestBody UserVo userVo) {
+        service.saveUser(userVo);
     }
 }
