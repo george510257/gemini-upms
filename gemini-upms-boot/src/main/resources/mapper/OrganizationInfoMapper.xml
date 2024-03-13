@@ -25,7 +25,9 @@
         <result column="code" property="code"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
+        <result column="type_name" property="type"/>
         <result column="parent_id" property="parentId"/>
+        <result column="sort" property="sort"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="version" property="version"/>
         <result column="deleted" property="deleted"/>
@@ -35,8 +37,6 @@
         <result column="update_user_name" property="updateUserName"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
-        <result column="type_name" property="type"/>
-        <result column="weight" property="weight"/>
     </resultMap>
 
     <sql id="organizationInfoSql">
@@ -44,8 +44,7 @@
     </sql>
     <select id="listByUserId" resultMap="organizationVoMap">
         select toi.*,
-               tdi.name as type_name,
-               toi.sort as weight
+               tdi.name as type_name
         from t_organization_info toi
                  left join t_dict_info tdi
                            on toi.type_id = tdi.id

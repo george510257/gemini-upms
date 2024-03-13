@@ -26,7 +26,9 @@
         <result column="code" property="code"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
+        <result column="type_name" property="type"/>
         <result column="parent_id" property="parentId"/>
+        <result column="sort" property="sort"/>
         <result column="command" property="command"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="version" property="version"/>
@@ -37,8 +39,6 @@
         <result column="update_user_name" property="updateUserName"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
-        <result column="type_name" property="type"/>
-        <result column="weight" property="weight"/>
     </resultMap>
 
     <sql id="permissionInfoSql">
@@ -46,8 +46,7 @@
     </sql>
     <select id="listByUserId" resultMap="permissionVoMap">
         select tpi.*,
-               tdi.name as type_name,
-               tpi.sort as weight
+               tdi.name as type_name
         from t_permission_info tpi
                  left join t_dict_info tdi
                            on tpi.type_id = tdi.id
