@@ -41,6 +41,46 @@ create table t_dict_info
   default charset = utf8mb4 comment '字典信息表';
 
 -- ----------------------------
+--  初始化字典信息
+-- ----------------------------
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 'org_type', '组织类型', '组织类型', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (11, 'org_company', '公司', '公司', 0, 1, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (2, 'role_type', '角色类型', '角色类型', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (3, 'permission_type', '权限类型', '权限类型', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (4, 'user_status', '用户状态', '用户状态', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (5, 'user_type', '用户类型', '用户类型', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_dict_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (6, 'tenant_type', '租户类型', '租户类型', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+
+
+-- ----------------------------
 --  客户端信息表
 -- ----------------------------
 drop table if exists t_client_info;
@@ -75,6 +115,37 @@ create table t_client_info
     unique key uk_client_name (client_name)
 ) engine = InnoDB
   default charset = utf8mb4 comment '客户端信息表';
+
+-- ----------------------------
+--  初始化客户端信息
+-- ----------------------------
+insert into t_client_info (id, client_id, client_id_issued_at, client_secret, client_secret_expires_at, client_name,
+                           client_authentication_methods, authorized_grant_types, redirect_uris,
+                           post_logout_redirect_uris, scopes, client_settings, token_settings, additional_information,
+                           tenant_id, version, deleted, create_user_id, create_user_name, create_time, update_user_id,
+                           update_user_name, update_time)
+values (1, 'messaging-client', '2021-01-01 00:00:00', '{noop}secret', '2038-01-19 03:14:07', 'messaging-client',
+        'client_secret_basic',
+        'refresh_token,client_credentials,authorization_code',
+        'http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc,https://www.baidu.com',
+        'http://localhost:8080/logout', 'message:read,openid,profile,message:write',
+        '{"settings.client.require-proof-key":false,"settings.client.require-authorization-consent":true}',
+        '{"settings.token.reuse-refresh-tokens":true,"settings.token.id-token-signature-algorithm":"RS256","settings.token.access-token-time-to-live":"PT5M","settings.token.access-token-format":{"value":"self-contained"},"settings.token.refresh-token-time-to-live":"PT1H","settings.token.authorization-code-time-to-live":"PT5M","settings.token.device-code-time-to-live":"PT5M"}',
+        '', 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_client_info (id, client_id, client_id_issued_at, client_secret, client_secret_expires_at, client_name,
+                           client_authentication_methods, authorized_grant_types, redirect_uris,
+                           post_logout_redirect_uris, scopes, client_settings, token_settings, additional_information,
+                           tenant_id, version, deleted, create_user_id, create_user_name, create_time, update_user_id,
+                           update_user_name, update_time)
+values (2, 'device-client', '2021-01-01 00:00:00', '{noop}secret', '2038-01-19 03:14:07', 'device-client',
+        'none',
+        'refresh_token,urn:ietf:params:oauth:grant-type:device_code',
+        '', '', 'message:read,message:write',
+        '{"settings.client.require-proof-key":false,"settings.client.require-authorization-consent":false}',
+        '{"settings.token.reuse-refresh-tokens":true,"settings.token.id-token-signature-algorithm":"RS256","settings.token.access-token-time-to-live":"PT5M","settings.token.access-token-format":{"value":"self-contained"},"settings.token.refresh-token-time-to-live":"PT1H","settings.token.authorization-code-time-to-live":"PT5M","settings.token.device-code-time-to-live":"PT5M"}',
+        '', 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
 
 -- ----------------------------
 --  授权信息表
@@ -190,6 +261,17 @@ create table t_user_info
   default charset = utf8mb4 comment '用户信息表';
 
 -- ----------------------------
+--  初始化用户信息
+-- ----------------------------
+insert into t_user_info (id, username, password, mobile, email, real_name, nick_name, avatar, language, locale,
+                         time_zone,
+                         tenant_id, version, deleted, create_user_id, create_user_name, create_time, update_user_id,
+                         update_user_name, update_time)
+values (1, 'admin', '{noop}admin', '13800000000', 'admin@gls.com', '管理员', 'admin', '', 'zh_CN', 'zh_CN',
+        'Asia/Shanghai',
+        0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+
+-- ----------------------------
 --  角色信息表
 -- ----------------------------
 drop table if exists t_role_info;
@@ -217,6 +299,20 @@ create table t_role_info
     unique key uk_name (name)
 ) engine = InnoDB
   default charset = utf8mb4 comment '角色信息表';
+
+-- ----------------------------
+--  初始化角色信息
+-- ----------------------------
+insert into t_role_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 'admin', '管理员', '管理员', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_role_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                         create_user_id,
+                         create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (2, 'user', '用户', '用户', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
 
 -- ----------------------------
 --  权限信息表
@@ -249,6 +345,22 @@ create table t_permission_info
   default charset = utf8mb4 comment '权限信息表';
 
 -- ----------------------------
+--  初始化权限信息
+-- ----------------------------
+insert into t_permission_info (id, code, name, description, type_id, parent_id, sort, command, tenant_id, version,
+                               deleted,
+                               create_user_id, create_user_name, create_time, update_user_id, update_user_name,
+                               update_time)
+values (1, 'message:read', '消息读取', '消息读取', 0, 0, 0, 'message:read', 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00',
+        0, 'admin', '2021-01-01 00:00:00');
+insert into t_permission_info (id, code, name, description, type_id, parent_id, sort, command, tenant_id, version,
+                               deleted,
+                               create_user_id, create_user_name, create_time, update_user_id, update_user_name,
+                               update_time)
+values (2, 'message:write', '消息写入', '消息写入', 0, 0, 0, 'message:write', 0, 0, 0, 0, 'admin',
+        '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+
+-- ----------------------------
 --  组织信息表
 -- ----------------------------
 drop table if exists t_organization_info;
@@ -278,6 +390,25 @@ create table t_organization_info
   default charset = utf8mb4 comment '组织信息表';
 
 -- ----------------------------
+--  初始化组织信息
+-- ----------------------------
+insert into t_organization_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                                 create_user_id,
+                                 create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 'root', '根组织', '根组织', 0, 0, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_organization_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                                 create_user_id,
+                                 create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (2, 'sub', '子组织', '子组织', 0, 1, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+insert into t_organization_info (id, code, name, description, type_id, parent_id, sort, tenant_id, version, deleted,
+                                 create_user_id,
+                                 create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (3, 'sub1', '子组织1', '子组织1', 0, 2, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+
+-- ----------------------------
 --  租户信息表
 -- ----------------------------
 drop table if exists t_tenant_info;
@@ -305,6 +436,14 @@ create table t_tenant_info
   default charset = utf8mb4 comment '租户信息表';
 
 -- ----------------------------
+--  初始化租户信息
+-- ----------------------------
+insert into t_tenant_info (id, code, name, description, type_id, tenant_id, version, deleted, create_user_id,
+                           create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 'root', '根租户', '根租户', 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin',
+        '2021-01-01 00:00:00');
+
+-- ----------------------------
 --  用户角色关系表
 -- ----------------------------
 drop table if exists t_user_role_rel;
@@ -328,6 +467,16 @@ create table t_user_role_rel
     unique key uk_user_id_role_id (user_id, role_id)
 ) engine = InnoDB
   default charset = utf8mb4 comment '用户角色关系表';
+
+-- ----------------------------
+--  初始化用户角色关系
+-- ----------------------------
+insert into t_user_role_rel (id, user_id, role_id, default_flag, tenant_id, version, deleted, create_user_id,
+                             create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 1, 1, 1, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+insert into t_user_role_rel (id, user_id, role_id, default_flag, tenant_id, version, deleted, create_user_id,
+                             create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (2, 1, 2, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
 
 -- ----------------------------
 --  角色权限关系表
@@ -354,6 +503,22 @@ create table t_role_permission_rel
   default charset = utf8mb4 comment '角色权限关系表';
 
 -- ----------------------------
+--  初始化角色权限关系
+-- ----------------------------
+insert into t_role_permission_rel (id, role_id, permission_id, tenant_id, version, deleted, create_user_id,
+                                   create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 1, 1, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+insert into t_role_permission_rel (id, role_id, permission_id, tenant_id, version, deleted, create_user_id,
+                                   create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (2, 1, 2, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+insert into t_role_permission_rel (id, role_id, permission_id, tenant_id, version, deleted, create_user_id,
+                                   create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (3, 2, 1, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+insert into t_role_permission_rel (id, role_id, permission_id, tenant_id, version, deleted, create_user_id,
+                                   create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (4, 2, 2, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+
+-- ----------------------------
 --  用户组织关系表
 -- ----------------------------
 drop table if exists t_user_organization_rel;
@@ -377,3 +542,19 @@ create table t_user_organization_rel
     unique key uk_user_id_organization_id (user_id, organization_id)
 ) engine = InnoDB
   default charset = utf8mb4 comment '用户组织关系表';
+
+-- ----------------------------
+--  初始化用户组织关系
+-- ----------------------------
+insert into t_user_organization_rel (id, user_id, organization_id, default_flag, tenant_id, version, deleted,
+                                     create_user_id,
+                                     create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (1, 1, 1, 1, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+insert into t_user_organization_rel (id, user_id, organization_id, default_flag, tenant_id, version, deleted,
+                                     create_user_id,
+                                     create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (2, 1, 2, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');
+insert into t_user_organization_rel (id, user_id, organization_id, default_flag, tenant_id, version, deleted,
+                                     create_user_id,
+                                     create_user_name, create_time, update_user_id, update_user_name, update_time)
+values (3, 1, 3, 0, 0, 0, 0, 0, 'admin', '2021-01-01 00:00:00', 0, 'admin', '2021-01-01 00:00:00');

@@ -3,6 +3,7 @@ package com.gls.gemini.upms.boot.web.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gls.gemini.sdk.core.vo.UserVo;
 import com.gls.gemini.starter.mybatis.base.BaseServiceImpl;
+import com.gls.gemini.upms.boot.web.converter.UserConverter;
 import com.gls.gemini.upms.boot.web.converter.UserInfoConverter;
 import com.gls.gemini.upms.boot.web.entity.UserInfoEntity;
 import com.gls.gemini.upms.boot.web.mapper.UserInfoMapper;
@@ -36,6 +37,9 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
     @Resource
     private OrganizationInfoService organizationInfoService;
 
+    @Resource
+    private UserConverter userConverter;
+
     /**
      * 根据用户名获取用户信息
      *
@@ -51,7 +55,7 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
             return null;
         }
 
-        UserVo userVo = this.converter.reverseUserVo(userInfoEntity);
+        UserVo userVo = this.userConverter.reverse(userInfoEntity);
         userVo.setRoles(this.roleInfoService.listByUserId(userInfoEntity.getId()));
         userVo.setPermissions(this.permissionInfoService.listByUserId(userInfoEntity.getId()));
         userVo.setOrganizations(this.organizationInfoService.listByUserId(userInfoEntity.getId()));
@@ -62,9 +66,9 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
         UserInfoEntity userInfoEntity = this.baseMapper.selectOne(new QueryWrapper<UserInfoEntity>()
                 .eq(UserInfoEntity.COL_USERNAME, userVo.getUsername()));
         if (userInfoEntity == null) {
-            userInfoEntity = this.converter.convertUserVo(userVo);
+            userInfoEntity = userConverter.convert(userVo);
         } else {
-            this.converter.convertCopyUserVo(userVo, userInfoEntity);
+            userConverter.convertCopy(userVo, userInfoEntity);
         }
         this.save(userInfoEntity);
     }
