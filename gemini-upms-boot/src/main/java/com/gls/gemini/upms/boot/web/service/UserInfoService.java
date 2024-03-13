@@ -57,7 +57,6 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
 
         UserVo userVo = this.userConverter.reverse(userInfoEntity);
         userVo.setRoles(this.roleInfoService.listByUserId(userInfoEntity.getId()));
-        userVo.setPermissions(this.permissionInfoService.listByUserId(userInfoEntity.getId()));
         userVo.setOrganizations(this.organizationInfoService.listByUserId(userInfoEntity.getId()));
         return userVo;
     }
