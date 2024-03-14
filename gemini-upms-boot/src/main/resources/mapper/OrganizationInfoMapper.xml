@@ -55,5 +55,19 @@
         where tuor.user_id = #{userId}
           and toi.deleted = 0;
     </select>
+    <select id="getOrganizationByUserId" resultMap="organizationVoMap">
+        select toi.*,
+               tdi.name as type_name
+        from t_organization_info toi
+                 left join t_dict_info tdi
+                           on toi.type_id = tdi.id
+                               and toi.deleted = tdi.deleted
+                 inner join t_user_organization_rel tuor
+                            on toi.id = tuor.organization_id
+                                and toi.deleted = tuor.deleted
+        where tuor.user_id = #{userId}
+          and tuor.default_flag = 1
+          and tuor.deleted = 0;
+    </select>
 
 </mapper>

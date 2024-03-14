@@ -20,4 +20,12 @@ public interface RoleInfoMapper extends BaseMapper<RoleInfoEntity> {
      * @return 角色信息
      */
     List<RoleVo> listByUserId(Long userId);
+
+    /**
+     * 根据用户id获取角色信息
+     *
+     * @param userId 用户id
+     * @return 角色信息
+     */
+    RoleVo getRoleByUserId(Long userId);
 }

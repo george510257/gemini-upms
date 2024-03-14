@@ -29,4 +29,14 @@ public class RoleInfoService extends BaseServiceImpl<RoleInfoConverter, RoleInfo
     public List<RoleVo> listByUserId(Long userId) {
         return baseMapper.listByUserId(userId);
     }
+
+    /**
+     * 根据用户id获取角色信息
+     *
+     * @param userId 用户id
+     * @return 角色信息
+     */
+    public RoleVo getRoleByUserId(Long userId) {
+        return baseMapper.getRoleByUserId(userId);
+    }
 }

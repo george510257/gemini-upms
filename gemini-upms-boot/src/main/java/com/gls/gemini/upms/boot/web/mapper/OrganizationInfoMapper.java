@@ -20,4 +20,6 @@ public interface OrganizationInfoMapper extends BaseMapper<OrganizationInfoEntit
      * @return 组织信息
      */
     List<OrganizationVo> listByUserId(Long userId);
+
+    OrganizationVo getOrganizationByUserId(Long userId);
 }
