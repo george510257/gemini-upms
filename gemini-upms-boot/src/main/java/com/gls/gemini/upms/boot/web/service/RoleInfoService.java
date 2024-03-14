@@ -27,6 +27,6 @@ public class RoleInfoService extends BaseServiceImpl<RoleInfoConverter, RoleInfo
      * @return 角色信息
      */
     public List<RoleVo> listByUserId(Long userId) {
-        return this.baseMapper.listByUserId(userId);
+        return baseMapper.listByUserId(userId);
     }
 }

@@ -25,9 +25,8 @@ public class ClientInfoService extends BaseServiceImpl<ClientInfoConverter, Clie
      * @return 客户端信息
      */
     public ClientInfoVo getByClientId(String clientId) {
-        QueryWrapper<ClientInfoEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(ClientInfoEntity.COL_CLIENT_ID, clientId);
-        ClientInfoEntity clientInfoEntity = this.getOne(queryWrapper);
-        return this.converter.reverse(clientInfoEntity);
+        ClientInfoEntity clientInfoEntity = baseMapper.selectOne(new QueryWrapper<ClientInfoEntity>()
+                .eq(ClientInfoEntity.COL_CLIENT_ID, clientId));
+        return converter.reverse(clientInfoEntity);
     }
 }

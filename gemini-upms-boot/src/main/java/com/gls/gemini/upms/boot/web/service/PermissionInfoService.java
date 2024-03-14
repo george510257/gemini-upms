@@ -1,6 +1,5 @@
 package com.gls.gemini.upms.boot.web.service;
 
-import com.gls.gemini.sdk.core.vo.PermissionVo;
 import com.gls.gemini.starter.mybatis.base.BaseServiceImpl;
 import com.gls.gemini.upms.boot.web.converter.PermissionInfoConverter;
 import com.gls.gemini.upms.boot.web.entity.PermissionInfoEntity;
@@ -8,8 +7,6 @@ import com.gls.gemini.upms.boot.web.mapper.PermissionInfoMapper;
 import com.gls.gemini.upms.sdk.vo.PermissionInfoVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * 权限信息表 服务实现类
@@ -20,13 +17,4 @@ import java.util.List;
 @Slf4j
 @Service
 public class PermissionInfoService extends BaseServiceImpl<PermissionInfoConverter, PermissionInfoMapper, PermissionInfoVo, PermissionInfoEntity> {
-    /**
-     * 根据用户id获取权限信息
-     *
-     * @param userId 用户id
-     * @return 权限信息
-     */
-    public List<PermissionVo> listByUserId(Long userId) {
-        return this.baseMapper.listByUserId(userId);
-    }
 }

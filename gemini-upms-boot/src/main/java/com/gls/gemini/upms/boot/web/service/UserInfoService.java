@@ -27,16 +27,13 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
     @Resource
     private RoleInfoService roleInfoService;
     /**
-     * 权限信息表 服务
-     */
-    @Resource
-    private PermissionInfoService permissionInfoService;
-    /**
      * 组织信息表 服务
      */
     @Resource
     private OrganizationInfoService organizationInfoService;
-
+    /**
+     * 用户信息转换器
+     */
     @Resource
     private UserConverter userConverter;
 
@@ -47,22 +44,21 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
      * @return 用户信息
      */
     public UserVo loadUserByUsername(String username) {
-        QueryWrapper<UserInfoEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(UserInfoEntity.COL_USERNAME, username);
-        UserInfoEntity userInfoEntity = this.getOne(queryWrapper);
+        UserInfoEntity entity = baseMapper.selectOne(new QueryWrapper<UserInfoEntity>()
+                .eq(UserInfoEntity.COL_USERNAME, username));
 
-        if (userInfoEntity == null) {
+        if (entity == null) {
             return null;
         }
 
-        UserVo userVo = this.userConverter.reverse(userInfoEntity);
-        userVo.setRoles(this.roleInfoService.listByUserId(userInfoEntity.getId()));
-        userVo.setOrganizations(this.organizationInfoService.listByUserId(userInfoEntity.getId()));
+        UserVo userVo = userConverter.reverse(entity);
+        userVo.setRoles(roleInfoService.listByUserId(entity.getId()));
+        userVo.setOrganizations(organizationInfoService.listByUserId(entity.getId()));
         return userVo;
     }
 
     public void saveUser(UserVo userVo) {
-        UserInfoEntity userInfoEntity = this.baseMapper.selectOne(new QueryWrapper<UserInfoEntity>()
+        UserInfoEntity userInfoEntity = baseMapper.selectOne(new QueryWrapper<UserInfoEntity>()
                 .eq(UserInfoEntity.COL_USERNAME, userVo.getUsername()));
         if (userInfoEntity == null) {
             userInfoEntity = userConverter.convert(userVo);

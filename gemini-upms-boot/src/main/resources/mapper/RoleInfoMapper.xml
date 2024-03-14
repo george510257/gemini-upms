@@ -37,23 +37,79 @@
         <result column="update_user_name" property="updateUserName"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <collection property="permissions" ofType="com.gls.gemini.sdk.core.vo.PermissionVo">
+            <id column="permission_id" property="id"/>
+            <result column="permission_code" property="code"/>
+            <result column="permission_name" property="name"/>
+            <result column="permission_description" property="description"/>
+            <result column="permission_type_name" property="type"/>
+            <result column="permission_parent_id" property="parentId"/>
+            <result column="permission_sort" property="sort"/>
+            <result column="permission_command" property="command"/>
+            <result column="permission_tenant_id" property="tenantId"/>
+            <result column="permission_version" property="version"/>
+            <result column="permission_deleted" property="deleted"/>
+            <result column="permission_create_user_id" property="createUserId"/>
+            <result column="permission_update_user_id" property="updateUserId"/>
+            <result column="permission_create_user_name" property="createUserName"/>
+            <result column="permission_update_user_name" property="updateUserName"/>
+            <result column="permission_create_time" property="createTime"/>
+            <result column="permission_update_time" property="updateTime"/>
+        </collection>
     </resultMap>
 
     <sql id="roleInfoSql">
         id,code,name,description,type_id,parent_id,sort,tenant_id,version,deleted,create_user_id,create_user_name,create_time,update_user_id,update_user_name,update_time
     </sql>
     <select id="listByUserId" resultMap="roleVoMap">
-        select tri.*,
-               tdi.name as type_name
+        select tri.id,
+               tri.code,
+               tri.name,
+               tri.description,
+               tri.type_id,
+               tdi.name             as type_name,
+               tri.parent_id,
+               tri.sort,
+               tri.tenant_id,
+               tri.version,
+               tri.deleted,
+               tri.create_user_id,
+               tri.create_user_name,
+               tri.create_time,
+               tri.update_user_id,
+               tri.update_user_name,
+               tri.update_time,
+               tpi.id               as permission_id,
+               tpi.code             as permission_code,
+               tpi.name             as permission_name,
+               tpi.description      as permission_description,
+               tpi.type_id          as permission_type_id,
+               tdi2.name            as permission_type_name,
+               tpi.parent_id        as permission_parent_id,
+               tpi.sort             as permission_sort,
+               tpi.tenant_id        as permission_tenant_id,
+               tpi.version          as permission_version,
+               tpi.deleted          as permission_deleted,
+               tpi.create_user_id   as permission_create_user_id,
+               tpi.create_user_name as permission_create_user_name,
+               tpi.create_time      as permission_create_time,
+               tpi.update_user_id   as permission_update_user_id,
+               tpi.update_user_name as permission_update_user_name,
+               tpi.update_time      as permission_update_time
         from t_role_info tri
                  left join t_dict_info tdi
-                           on tri.type_id = tdi.id
-                               and tri.deleted = tdi.deleted
+                           on tri.type_id = tdi.id and tri.deleted = tdi.deleted
+                 inner join t_role_permission_rel trpr
+                            on tri.id = trpr.role_id and tri.deleted = trpr.deleted
+                 inner join t_permission_info tpi
+                            on trpr.permission_id = tpi.id and trpr.deleted = tpi.deleted
+                 left join t_dict_info tdi2
+                           on tpi.type_id = tdi2.id and tpi.deleted = tdi2.deleted
                  inner join t_user_role_rel turr
-                            on tri.id = turr.role_id
-                                and tri.deleted = turr.deleted
+                            on tri.id = turr.role_id and tri.deleted = turr.deleted
         where turr.user_id = #{userId}
-          and tri.deleted = 0;
+          and turr.deleted = 0
+
     </select>
 
 

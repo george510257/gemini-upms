@@ -27,6 +27,6 @@ public class OrganizationInfoService extends BaseServiceImpl<OrganizationInfoCon
      * @return 组织信息
      */
     public List<OrganizationVo> listByUserId(Long userId) {
-        return this.baseMapper.listByUserId(userId);
+        return baseMapper.listByUserId(userId);
     }
 }
