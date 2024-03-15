@@ -28,4 +28,6 @@ public interface UserInfoFeign extends BaseFeign<UserInfoVo> {
 
     @PostMapping("/saveUser")
     void saveUser(@RequestBody UserVo userVo);
+
+    Result<UserInfoVo> getUserInfoByUsername(String username);
 }
