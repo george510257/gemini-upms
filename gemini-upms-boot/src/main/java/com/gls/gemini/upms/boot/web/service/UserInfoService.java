@@ -59,15 +59,4 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
         userVo.setOrganizations(organizationInfoService.listByUserId(entity.getId()));
         return userVo;
     }
-
-    public void saveUser(UserVo userVo) {
-        UserInfoEntity userInfoEntity = baseMapper.selectOne(new QueryWrapper<UserInfoEntity>()
-                .eq(UserInfoEntity.COL_USERNAME, userVo.getUsername()));
-        if (userInfoEntity == null) {
-            userInfoEntity = userConverter.convert(userVo);
-        } else {
-            userConverter.convertCopy(userVo, userInfoEntity);
-        }
-        this.save(userInfoEntity);
-    }
 }
