@@ -1,6 +1,6 @@
 package com.gls.gemini.upms.boot.web.service;
 
-import com.gls.gemini.sdk.core.vo.RoleVo;
+import com.gls.gemini.sdk.core.dto.RoleDto;
 import com.gls.gemini.starter.mybatis.base.BaseServiceImpl;
 import com.gls.gemini.upms.boot.web.converter.RoleInfoConverter;
 import com.gls.gemini.upms.boot.web.entity.RoleInfoEntity;
@@ -26,7 +26,7 @@ public class RoleInfoService extends BaseServiceImpl<RoleInfoConverter, RoleInfo
      * @param userId 用户id
      * @return 角色信息
      */
-    public List<RoleVo> listByUserId(Long userId) {
+    public List<RoleDto> listByUserId(Long userId) {
         return baseMapper.listByUserId(userId);
     }
 
@@ -36,7 +36,7 @@ public class RoleInfoService extends BaseServiceImpl<RoleInfoConverter, RoleInfo
      * @param userId 用户id
      * @return 角色信息
      */
-    public RoleVo getRoleByUserId(Long userId) {
+    public RoleDto getRoleByUserId(Long userId) {
         return baseMapper.getRoleByUserId(userId);
     }
 }

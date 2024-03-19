@@ -1,7 +1,7 @@
 package com.gls.gemini.upms.boot.web.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gls.gemini.sdk.core.vo.OrganizationVo;
+import com.gls.gemini.sdk.core.dto.OrganizationDto;
 import com.gls.gemini.upms.boot.web.entity.OrganizationInfoEntity;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface OrganizationInfoMapper extends BaseMapper<OrganizationInfoEntit
      * @param userId 用户id
      * @return 组织信息
      */
-    List<OrganizationVo> listByUserId(Long userId);
+    List<OrganizationDto> listByUserId(Long userId);
 
-    OrganizationVo getOrganizationByUserId(Long userId);
+    OrganizationDto getOrganizationByUserId(Long userId);
 }

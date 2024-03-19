@@ -1,6 +1,6 @@
 package com.gls.gemini.upms.boot.web.service;
 
-import com.gls.gemini.sdk.core.vo.OrganizationVo;
+import com.gls.gemini.sdk.core.dto.OrganizationDto;
 import com.gls.gemini.starter.mybatis.base.BaseServiceImpl;
 import com.gls.gemini.upms.boot.web.converter.OrganizationInfoConverter;
 import com.gls.gemini.upms.boot.web.entity.OrganizationInfoEntity;
@@ -26,11 +26,11 @@ public class OrganizationInfoService extends BaseServiceImpl<OrganizationInfoCon
      * @param userId 用户id
      * @return 组织信息
      */
-    public List<OrganizationVo> listByUserId(Long userId) {
+    public List<OrganizationDto> listByUserId(Long userId) {
         return baseMapper.listByUserId(userId);
     }
 
-    public OrganizationVo getOrganizationByUserId(Long userId) {
+    public OrganizationDto getOrganizationByUserId(Long userId) {
         return baseMapper.getOrganizationByUserId(userId);
     }
 }

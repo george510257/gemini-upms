@@ -1,7 +1,7 @@
 package com.gls.gemini.upms.boot.web.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.gls.gemini.sdk.core.vo.UserVo;
+import com.gls.gemini.sdk.core.dto.UserDto;
 import com.gls.gemini.starter.mybatis.base.BaseServiceImpl;
 import com.gls.gemini.upms.boot.web.converter.UserConverter;
 import com.gls.gemini.upms.boot.web.converter.UserInfoConverter;
@@ -43,7 +43,7 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
      * @param username 用户名
      * @return 用户信息
      */
-    public UserVo loadUserByUsername(String username) {
+    public UserDto loadUserByUsername(String username) {
         UserInfoEntity entity = baseMapper.selectOne(new QueryWrapper<UserInfoEntity>()
                 .eq(UserInfoEntity.COL_USERNAME, username));
 
@@ -51,12 +51,12 @@ public class UserInfoService extends BaseServiceImpl<UserInfoConverter, UserInfo
             return null;
         }
 
-        UserVo userVo = userConverter.reverse(entity);
-        userVo.setRole(roleInfoService.getRoleByUserId(entity.getId()));
-        userVo.setOrganization(organizationInfoService.getOrganizationByUserId(entity.getId()));
+        UserDto userDto = userConverter.reverse(entity);
+        userDto.setRole(roleInfoService.getRoleByUserId(entity.getId()));
+        userDto.setOrganization(organizationInfoService.getOrganizationByUserId(entity.getId()));
 
-        userVo.setRoles(roleInfoService.listByUserId(entity.getId()));
-        userVo.setOrganizations(organizationInfoService.listByUserId(entity.getId()));
-        return userVo;
+        userDto.setRoles(roleInfoService.listByUserId(entity.getId()));
+        userDto.setOrganizations(organizationInfoService.listByUserId(entity.getId()));
+        return userDto;
     }
 }

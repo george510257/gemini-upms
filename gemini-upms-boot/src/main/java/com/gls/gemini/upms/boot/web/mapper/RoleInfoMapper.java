@@ -1,7 +1,7 @@
 package com.gls.gemini.upms.boot.web.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gls.gemini.sdk.core.vo.RoleVo;
+import com.gls.gemini.sdk.core.dto.RoleDto;
 import com.gls.gemini.upms.boot.web.entity.RoleInfoEntity;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface RoleInfoMapper extends BaseMapper<RoleInfoEntity> {
      * @param userId 用户id
      * @return 角色信息
      */
-    List<RoleVo> listByUserId(Long userId);
+    List<RoleDto> listByUserId(Long userId);
 
     /**
      * 根据用户id获取角色信息
@@ -27,5 +27,5 @@ public interface RoleInfoMapper extends BaseMapper<RoleInfoEntity> {
      * @param userId 用户id
      * @return 角色信息
      */
-    RoleVo getRoleByUserId(Long userId);
+    RoleDto getRoleByUserId(Long userId);
 }
