@@ -11,10 +11,18 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class KafkaProducer {
-
+    /**
+     * KafkaTemplate 用于发送消息
+     */
     @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
 
+    /**
+     * 发送消息
+     *
+     * @param topic 主题
+     * @param input 消息
+     */
     public void send(String topic, String input) {
         log.info("KafkaProducer: {}", input);
         kafkaTemplate.send(topic, input).whenComplete((result, throwable) -> {

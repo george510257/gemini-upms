@@ -29,14 +29,28 @@ import java.util.stream.Collectors;
 @RequestMapping("/demo")
 @Tag(name = "demo", description = "demo数据")
 public class DemoController {
-
+    /**
+     * kafkaProducer kafka发送消息
+     */
     @Resource
     private KafkaProducer kafkaProducer;
+    /**
+     * ossTemplate
+     */
     @Resource
     private OssTemplate ossTemplate;
+    /**
+     * loginTemplate 获取登录用户
+     */
     @Resource
     private LoginTemplate<?, ?, ?, ?> loginTemplate;
 
+    /**
+     * kafkaDemo
+     *
+     * @param demoVo demoVo
+     * @return DemoVo
+     */
     @Operation(summary = "kafkaDemo", description = "kafka发送消息")
     @PostMapping("/kafkaDemo")
     public DemoVo hello(@RequestBody DemoVo demoVo) {
@@ -45,12 +59,22 @@ public class DemoController {
         return demoVo;
     }
 
+    /**
+     * ossDemo oss测试
+     *
+     * @return String oss测试
+     */
     @Operation(summary = "ossDemo", description = "oss测试")
     @PostMapping("/ossDemo")
     public String ossDemo() {
         return ossTemplate.getALlBucket().stream().map(Bucket::getName).collect(Collectors.joining(","));
     }
 
+    /**
+     * getLoginUser 获取登录用户
+     *
+     * @return String 获取登录用户
+     */
     @Operation(summary = "获取登录用户", description = "获取登录用户")
     @PostMapping("/getLoginUser")
     public String getLoginUser() {

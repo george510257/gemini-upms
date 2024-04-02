@@ -6,10 +6,15 @@ import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+/**
+ * 任务调度
+ */
 @Slf4j
 @Component
 public class DemoJob {
-
+    /**
+     * 任务调度demo
+     */
     @XxlJob("demoJob")
     public void demoJob() {
         XxlJobHelper.log("demoJob start");
@@ -17,6 +22,12 @@ public class DemoJob {
         XxlJobHelper.log("demoJob end");
     }
 
+    /**
+     * 任务调度demoVo
+     *
+     * @param demoVo demoVo
+     * @return demoVo
+     */
     @XxlJob("demoVo")
     public DemoVo demoVo(DemoVo demoVo) {
         XxlJobHelper.log("demoVo start");
