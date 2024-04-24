@@ -19,8 +19,8 @@ spring:
     type: redis
     redis:
       cache-null-values: true
-      key-prefix: "gemini-upms:cache:"
-      time-to-live: 1000
+      key-prefix: "gemini:upms:cache:"
+      time-to-live: 10000
   kafka:
     bootstrap-servers: docker-server:19092
     consumer:
@@ -61,7 +61,7 @@ gemini:
 
   redis:
     cache:
-      - cache-name: "demo-service:vo"
+      - cache-name: "user_info_service"
         time-to-live: 3600000
 server:
   port: 8083
