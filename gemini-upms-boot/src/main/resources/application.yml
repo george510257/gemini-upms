@@ -58,11 +58,6 @@ gemini:
         name: "Gemini UPMS"
         email: "gemini@glseven.com"
         url: "https://www.glseven.com"
-
-  redis:
-    cache:
-      - cache-name: "user_info_service"
-        time-to-live: 3600000
 server:
   port: 8083
 
