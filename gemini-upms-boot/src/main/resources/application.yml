@@ -20,7 +20,7 @@ spring:
     redis:
       cache-null-values: true
       key-prefix: "gemini:upms:cache:"
-      time-to-live: 10000
+      time-to-live: 1000000
   kafka:
     bootstrap-servers: docker-server:19092
     consumer:
