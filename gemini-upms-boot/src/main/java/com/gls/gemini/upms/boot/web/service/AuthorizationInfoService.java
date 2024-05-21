@@ -42,4 +42,18 @@ public class AuthorizationInfoService extends BaseServiceImpl<AuthorizationInfoC
                 .or()
                 .eq(AuthorizationInfoEntity.COL_STATE, token)));
     }
+
+    public AuthorizationInfoVo save(AuthorizationInfoVo authorizationInfoVo) {
+        AuthorizationInfoEntity entity = baseMapper.selectOne(new QueryWrapper<AuthorizationInfoEntity>()
+                .eq(AuthorizationInfoEntity.COL_USER_ID, authorizationInfoVo.getUserId())
+                .eq(AuthorizationInfoEntity.COL_CLIENT_ID, authorizationInfoVo.getClientId()));
+        if (entity == null) {
+            entity = converter.convert(authorizationInfoVo);
+        } else {
+            entity = converter.convertCopy(authorizationInfoVo, entity);
+        }
+        this.saveOrUpdate(entity);
+        return converter.reverse(entity);
+
+    }
 }

@@ -5,6 +5,7 @@ import com.gls.gemini.sdk.core.feign.BaseFeign;
 import com.gls.gemini.upms.sdk.vo.AuthorizationInfoVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -24,4 +25,13 @@ public interface AuthorizationInfoFeign extends BaseFeign<AuthorizationInfoVo> {
      */
     @PostMapping("/getByToken")
     Result<List<AuthorizationInfoVo>> getByToken(String token);
+
+    /**
+     * 保存
+     *
+     * @param authorizationInfoVo 授权信息
+     * @return 授权信息
+     */
+    @PostMapping("/save")
+    Result<AuthorizationInfoVo> save(@RequestBody AuthorizationInfoVo authorizationInfoVo);
 }

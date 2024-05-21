@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,5 +39,12 @@ public class AuthorizationInfoController extends BaseController<AuthorizationInf
     @Override
     public Result<List<AuthorizationInfoVo>> getByToken(String token) {
         return ResultEnums.SUCCESS.getResult(this.service.getByToken(token));
+    }
+
+    @Operation(summary = "保存", description = "保存")
+    @PostMapping("/save")
+    @Override
+    public Result<AuthorizationInfoVo> save(@RequestBody AuthorizationInfoVo authorizationInfoVo) {
+        return ResultEnums.SUCCESS.getResult(this.service.save(authorizationInfoVo));
     }
 }

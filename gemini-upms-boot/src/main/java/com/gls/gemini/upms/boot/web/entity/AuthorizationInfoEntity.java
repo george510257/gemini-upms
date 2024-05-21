@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -74,7 +75,7 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 属性
      */
-    private Map<String, Object> attributes;
+    private Map<String, Object> attributes = new HashMap<>();
     /**
      * 状态
      */
@@ -82,7 +83,7 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 授权码值
      */
-    private String authorizationCodeValue;
+    private String authorizationCodeValue = "";
     /**
      * 授权码发放时间
      */
@@ -94,11 +95,11 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 授权码元数据
      */
-    private Map<String, Object> authorizationCodeMetadata;
+    private Map<String, Object> authorizationCodeMetadata = new HashMap<>();
     /**
      * 访问token值
      */
-    private String accessTokenValue;
+    private String accessTokenValue = "";
     /**
      * 访问token发放时间
      */
@@ -110,7 +111,7 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 访问token元数据
      */
-    private Map<String, Object> accessTokenMetadata;
+    private Map<String, Object> accessTokenMetadata = new HashMap<>();
     /**
      * 访问token类型
      */
@@ -122,7 +123,7 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 刷新token值
      */
-    private String refreshTokenValue;
+    private String refreshTokenValue = "";
     /**
      * 刷新token发放时间
      */
@@ -134,11 +135,11 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 刷新token元数据
      */
-    private Map<String, Object> refreshTokenMetadata;
+    private Map<String, Object> refreshTokenMetadata = new HashMap<>();
     /**
      * oidc id token值
      */
-    private String oidcIdTokenValue;
+    private String oidcIdTokenValue = "";
     /**
      * oidc id token发放时间
      */
@@ -150,11 +151,11 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * oidc id token元数据
      */
-    private Map<String, Object> oidcIdTokenMetadata;
+    private Map<String, Object> oidcIdTokenMetadata = new HashMap<>();
     /**
      * 用户code值
      */
-    private String userCodeValue;
+    private String userCodeValue = "";
     /**
      * 用户code发放时间
      */
@@ -166,11 +167,11 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 用户code元数据
      */
-    private Map<String, Object> userCodeMetadata;
+    private Map<String, Object> userCodeMetadata = new HashMap<>();
     /**
      * 设备code值
      */
-    private String deviceCodeValue;
+    private String deviceCodeValue = "";
     /**
      * 设备code发放时间
      */
@@ -182,5 +183,5 @@ public class AuthorizationInfoEntity extends BaseEntity {
     /**
      * 设备code元数据
      */
-    private Map<String, Object> deviceCodeMetadata;
+    private Map<String, Object> deviceCodeMetadata = new HashMap<>();
 }

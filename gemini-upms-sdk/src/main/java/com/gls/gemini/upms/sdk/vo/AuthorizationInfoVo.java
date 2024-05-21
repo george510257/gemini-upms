@@ -6,9 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 授权信息表 Vo
@@ -44,13 +42,13 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "授权作用域")
     @Schema(title = "授权作用域", description = "授权作用域")
-    private Set<String> authorizedScopes;
+    private Set<String> authorizedScopes = new HashSet<>();
     /**
      * 属性
      */
     @ExcelProperty(value = "属性")
     @Schema(title = "属性", description = "属性")
-    private Map<String, Object> attributes;
+    private Map<String, Object> attributes = new HashMap<>();
     /**
      * 状态
      */
@@ -62,7 +60,7 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "授权码值")
     @Schema(title = "授权码值", description = "授权码值")
-    private String authorizationCodeValue;
+    private String authorizationCodeValue = "";
     /**
      * 授权码发放时间
      */
@@ -80,13 +78,13 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "授权码元数据")
     @Schema(title = "授权码元数据", description = "授权码元数据")
-    private Map<String, Object> authorizationCodeMetadata;
+    private Map<String, Object> authorizationCodeMetadata = new HashMap<>();
     /**
      * 访问token值
      */
     @ExcelProperty(value = "访问token值")
     @Schema(title = "访问token值", description = "访问token值")
-    private String accessTokenValue;
+    private String accessTokenValue = "";
     /**
      * 访问token发放时间
      */
@@ -104,7 +102,7 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "访问token元数据")
     @Schema(title = "访问token元数据", description = "访问token元数据")
-    private Map<String, Object> accessTokenMetadata;
+    private Map<String, Object> accessTokenMetadata = new HashMap<>();
     /**
      * 访问token类型
      */
@@ -122,7 +120,7 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "刷新token值")
     @Schema(title = "刷新token值", description = "刷新token值")
-    private String refreshTokenValue;
+    private String refreshTokenValue = "";
     /**
      * 刷新token发放时间
      */
@@ -140,13 +138,13 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "刷新token元数据")
     @Schema(title = "刷新token元数据", description = "刷新token元数据")
-    private Map<String, Object> refreshTokenMetadata;
+    private Map<String, Object> refreshTokenMetadata = new HashMap<>();
     /**
      * oidc id token值
      */
     @ExcelProperty(value = "oidc id token值")
     @Schema(title = "oidc id token值", description = "oidc id token值")
-    private String oidcIdTokenValue;
+    private String oidcIdTokenValue = "";
     /**
      * oidc id token发放时间
      */
@@ -164,13 +162,13 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "oidc id token元数据")
     @Schema(title = "oidc id token元数据", description = "oidc id token元数据")
-    private Map<String, Object> oidcIdTokenMetadata;
+    private Map<String, Object> oidcIdTokenMetadata = new HashMap<>();
     /**
      * 用户code值
      */
     @ExcelProperty(value = "用户code值")
     @Schema(title = "用户code值", description = "用户code值")
-    private String userCodeValue;
+    private String userCodeValue = "";
     /**
      * 用户code发放时间
      */
@@ -188,13 +186,13 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "用户code元数据")
     @Schema(title = "用户code元数据", description = "用户code元数据")
-    private Map<String, Object> userCodeMetadata;
+    private Map<String, Object> userCodeMetadata = new HashMap<>();
     /**
      * 设备code值
      */
     @ExcelProperty(value = "设备code值")
     @Schema(title = "设备code值", description = "设备code值")
-    private String deviceCodeValue;
+    private String deviceCodeValue = "";
     /**
      * 设备code发放时间
      */
@@ -212,5 +210,5 @@ public class AuthorizationInfoVo extends BaseVo {
      */
     @ExcelProperty(value = "设备code元数据")
     @Schema(title = "设备code元数据", description = "设备code元数据")
-    private Map<String, Object> deviceCodeMetadata;
+    private Map<String, Object> deviceCodeMetadata = new HashMap<>();
 }
